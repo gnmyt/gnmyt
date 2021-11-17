@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  background-color: #2f3136;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  height: 40vmin;
+  pointer-events: none;
+  border-radius: 200px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .profile-pic {
+    animation: profile-pic infinite 20s linear;
+  }
+}
+
+@keyframes profile-pic {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
