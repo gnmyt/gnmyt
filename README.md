@@ -1,16 +1,14 @@
 ### Hi there 👋
 
-<!--
-**gnmyt/gnmyt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I'm Mathias, a full-stack developer living in Germany.
 
-Here are some ideas to get you started:
+🔗 &nbsp;**My socials**
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<a href="https://twitter.com/germannewsmaker" target="blank"><img align="center" src="https://raw.githubusercontent.com/gnmyt/gnmyt/main/images_md/twitter.png" height="40" width="40" /></a>
+<a href="https://www.youtube.com/channel/UCv2rHNRG7cdyyKRJJYxxVjA" target="blank"><img align="center" src="https://raw.githubusercontent.com/gnmyt/gnmyt/main/images_md/youtube.png" height="30" width="40" /></a>
+<a href="http://discord.com/users/386242172632170496" target="blank"><img align="center" src="https://raw.githubusercontent.com/gnmyt/gnmyt/main/images_md/discord.png" height="40" width="35" /></a>
+<a href="https://steamcommunity.com/id/GNMYT/" target="blank"><img align="center" src="https://raw.githubusercontent.com/gnmyt/gnmyt/main/images_md/steam.png" height="30" width="30" /></a>
+<a href="https://www.instagram.com/germannewsmakeryt/" target="blank"><img align="center" src="https://raw.githubusercontent.com/gnmyt/gnmyt/main/images_md/instagram.png" height="40" width="40" /></a>
+
+📊 &nbsp;**My current stats**
+[![Stats](https://github-readme-stats.vercel.app/api?username=gnmyt&hide_title=true&bg_color=00000000&text_color=d1d1d1&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
