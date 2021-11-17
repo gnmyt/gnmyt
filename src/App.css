@@ -10,7 +10,7 @@
 .profile-pic {
   height: 40vmin;
   pointer-events: none;
-  border-radius: 200px;
+  border-radius: 500px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
