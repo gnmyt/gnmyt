@@ -32,7 +32,7 @@ const methods = [
     }
 ]
 
-export const Home = () => (
+export const Contact = () => (
     <div className="page-wrapper">
         <BackCard currentPage="Kontakt"/>
         <div className="contact-wrapper">
