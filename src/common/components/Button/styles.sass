@@ -1,0 +1,43 @@
+@import "@/common/styles/_colors.sass"
+
+.btn
+  border-radius: 15px
+  background: none
+  color: $gray
+  padding: 10px 20px
+  font-weight: 700
+  cursor: pointer
+  display: flex
+  align-items: center
+  transition: ease-in-out 0.2s
+  font-size: 30pt
+
+.btn-primary
+  border: 2px solid $primary
+  box-shadow: 0 0 5px 0 $primary
+
+.btn-primary:hover
+  box-shadow: 0 0 10px 0 $primary
+  color: $white
+
+.btn .icon
+  padding-right: 10px
+  font-size: 26pt
+
+@media screen and (max-width: 1550px)
+  .btn
+    font-size: 26pt
+  .btn .icon
+    font-size: 20pt
+
+@media screen and (max-width: 1050px)
+  .btn
+    font-size: 20pt
+  .btn .icon
+    font-size: 18pt
+
+@media screen and (max-width: 480px)
+  .btn
+    font-size: 16pt
+  .btn .icon
+    font-size: 14pt
