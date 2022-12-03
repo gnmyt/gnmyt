@@ -1,0 +1,60 @@
+@import "@/common/styles/colors"
+
+.home-wrapper
+  height: 100vh
+  display: flex
+  align-items: center
+  transition: ease-in-out 1s
+
+.left-area
+  margin-left: 5rem
+  min-width: 13rem
+  transition: ease-in-out 1s
+
+.button-area
+  display: flex
+  gap: 0.8rem
+
+.text-area
+  margin-bottom: 1rem
+
+.text-area *
+  color: $white
+  font-size: 58pt
+  font-weight: 900
+  margin: 0
+  transition: ease-in-out 1s
+
+.text-area span
+  color: $primary
+
+@media screen and (max-width: 1650px)
+  .text-area *
+    font-size: 48pt
+
+@media screen and (max-width: 1550px)
+  .left-area
+    margin-left: 3rem
+
+@media screen and (max-width: 1440px)
+  .text-area *
+    font-size: 38pt
+  .left-area
+    margin-left: 1rem
+
+@media screen and (max-width: 1050px)
+  .text-area *
+    font-size: 32pt
+  .left-area
+    margin: 0
+    display: flex
+    justify-content: center
+    flex-direction: column
+  .home-wrapper
+    justify-content: center
+
+@media screen and (max-width: 450px)
+  .text-area *
+    font-size: 28pt
+  .left-area
+    min-width: auto
