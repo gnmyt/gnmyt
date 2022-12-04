@@ -1,0 +1,39 @@
+@import "@/common/styles/colors"
+
+.project-entry
+  display: flex
+  justify-content: space-between
+
+.project-text
+  & h2, p
+    font-weight: 700
+    margin: 0
+    max-width: 30rem
+  & h2
+    color: $white
+    font-size: 36pt
+    display: flex
+    align-items: center
+    gap: 0.5rem
+  & p
+    margin-top: 10px
+    color: $gray
+
+
+.project-text h2 span
+  font-size: 16pt
+  background-color: $red
+  padding: 3px 10px
+  font-weight: 900
+  border-radius: 10px
+  box-shadow: 0 0 11px $red
+
+.project-text p svg
+  width: 30px
+  height: 30px
+  color: $primary
+
+
+.project-icon
+  width: 200px
+  height: 200px
