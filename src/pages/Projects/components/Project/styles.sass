@@ -5,6 +5,7 @@
   justify-content: space-between
 
 .project-text
+  margin-right: 1rem
   & h2, p
     font-weight: 700
     margin: 0
@@ -37,3 +38,20 @@
 .project-icon
   width: 200px
   height: 200px
+
+@media screen and (max-width: 740px)
+  .project-entry
+    flex-direction: column-reverse
+    gap: 1rem
+    text-align: center
+    align-items: center
+  .project-text h2
+    justify-content: center
+
+@media screen and (max-width: 512px)
+  .project-text
+    & h2
+      font-size: 26pt
+    & p
+      font-size: 20pt
+      hyphens: auto
