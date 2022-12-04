@@ -14,8 +14,8 @@ const Home = () => {
                                               loop/></span></h1>
                 </div>
                 <div className="button-area">
-                    <Button icon={faRocket} text="Projekte"/>
-                    <Button icon={faEnvelope} text="Kontakt"/>
+                    <Button icon={faRocket} text="Projekte" to="/projects"/>
+                    <Button icon={faEnvelope} text="Kontakt" to="/contact"/>
                 </div>
             </div>
 
