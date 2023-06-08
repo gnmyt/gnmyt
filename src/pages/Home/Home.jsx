@@ -10,7 +10,7 @@ const Home = () => {
             <div className="left-area">
                 <div className="text-area">
                     <h1>Hi, ich bin <span>GNM</span>.</h1>
-                    <h1>Ich <span><ReactTyped strings={["programmiere", "erstelle Konzepte", "bin 16 Jahre alt"]} typeSpeed={120} backSpeed={60}
+                    <h1>Ich <span><ReactTyped strings={["programmiere", "erstelle Konzepte", "bin 17 Jahre alt"]} typeSpeed={120} backSpeed={60}
                                               loop/></span></h1>
                 </div>
                 <div className="button-area">
