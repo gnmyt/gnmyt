@@ -3,8 +3,11 @@ import {Button} from "@/common/components/Button";
 import {faEnvelope, faRocket} from "@fortawesome/free-solid-svg-icons";
 import ReactTyped from "react-typed";
 import ImageArea from "@/pages/Home/components/ImageArea";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="home-wrapper">
             <div className="left-area">
@@ -20,6 +23,11 @@ const Home = () => {
             </div>
 
             <ImageArea />
+
+            <div className="legal-area">
+                <p onClick={() => navigate("/privacy")}>Datenschutz</p>
+                <p onClick={() => navigate("/imprint")}>Impressum</p>
+            </div>
 
         </div>
     );
