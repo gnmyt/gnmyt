@@ -10,14 +10,22 @@ import SheepstarIcon from "@/common/images/apps/sheepstar.png";
 import SierraIcon from "@/common/images/apps/sierra.png";
 import MecronyIcon from "@/common/images/apps/mecrony.png";
 import EducaiIcon from "@/common/images/apps/educai.png";
+import PowerToolsIcon from "@/common/images/apps/powertools.png";
 import Contributed from "@/pages/Projects/components/Contributed";
 
 const projects = [
     {
+        name: "PowerTools",
+        description: "PowerTools bietet dir verschiedene Tools um deinen Alltag zu erleichtern. " +
+            "Dazu gehört beispielsweise ein Passwort-Generator, ein QR-Code-Generator und mehr. ",
+        link: "https://tools.gnmyt.dev/",
+        icon: PowerToolsIcon,
+        label: "Neu",
+    },
+    {
         name: "MySpeed",
         description: "MySpeed hilft dir, den Überblick über dein Internet zu behalten. Erstelle automatisierte Speedtests " +
             "und lasse dir alle in einer Liste anzeigen.",
-        label: "Neu",
         link: "https://myspeed.gnmyt.dev/",
         icon: MySpeedIcon
     },
