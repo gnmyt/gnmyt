@@ -8,19 +8,26 @@ import MCIcon from "@/common/images/apps/mcdash.png";
 import LicenseIcon from "@/common/images/apps/licenseapi.png";
 import SheepstarIcon from "@/common/images/apps/sheepstar.png";
 import SierraIcon from "@/common/images/apps/sierra.png";
-import MecronyIcon from "@/common/images/apps/mecrony.png";
-import EducaiIcon from "@/common/images/apps/educai.png";
+import BFSIcon from "@/common/images/apps/bfs2of.png";
+import PerfectMarketIcon from "@/common/images/apps/pmg.png";
 import PowerToolsIcon from "@/common/images/apps/powertools.png";
 import Contributed from "@/pages/Projects/components/Contributed";
 
 const projects = [
+    {
+        name: "Perfect Market Game",
+        description: "Lerne spielerisch den vollkommenen Markt in deiner Klasse kennen und lass deine Mitschüler" +
+            " im Wettbewerb gegeneinander antreten. Geeignet für den Unterricht in BWR/R. ",
+        link: "https://pmg.gnmyt.dev/",
+        icon: PerfectMarketIcon,
+        label: "Neu",
+    },
     {
         name: "PowerTools",
         description: "PowerTools bietet dir verschiedene Tools um deinen Alltag zu erleichtern. " +
             "Dazu gehört beispielsweise ein Passwort-Generator, ein QR-Code-Generator und mehr. ",
         link: "https://tools.gnmyt.dev/",
         icon: PowerToolsIcon,
-        label: "Neu",
     },
     {
         name: "MySpeed",
@@ -47,8 +54,7 @@ const projects = [
         name: "MCDash",
         description: "Eine kostenlose Verwaltungs-Software für Spigot & Bungeecord-Server. " +
             "Die Software bietet ein umfangreiches Dashboard für das Verwalten von Plugins, Spielern und mehr.",
-        label: "In Arbeit",
-        link: "https://github.com/gnmyt/mcdash",
+        link: "https://mcdash.gnmyt.dev/",
         icon: MCIcon
     },
     {
@@ -80,17 +86,12 @@ const contributed = [
         icon: SierraIcon
     },
     {
-        name: "Mecrony",
-        description: "Eine leichtgewichtige Minecraft-Server-Software, welche auf Addons setzt.",
-        link: "https://github.com/Mecrony",
-        icon: MecronyIcon
+        name: "BFS2OF",
+        description: "Eine Gruppenarbeit innerhalb der Berufsschule. " +
+            "Wir haben eine Website erstellt, welche Quizzes innerhalb einer Klasse ermöglicht.",
+        link: "https://github.com/BFS2OF",
+        icon: BFSIcon
     },
-    {
-        name: "Educai",
-        description: "Eine Open-Source Verwaltungs-Software für Schulen. Hilft Lehrern und Schülern in Ihrem Schulalltag",
-        link: "https://github.com/educai-school",
-        icon: EducaiIcon
-    }
 ]
 
 export const Projects = () => (
