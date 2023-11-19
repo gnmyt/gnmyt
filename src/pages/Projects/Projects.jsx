@@ -17,7 +17,7 @@ const projects = [
     {
         name: "Perfect Market Game",
         description: "Lerne spielerisch den vollkommenen Markt in deiner Klasse kennen und lass deine Mitschüler" +
-            " im Wettbewerb gegeneinander antreten. Geeignet für den Unterricht in BWR/R. ",
+            " im Wettbewerb gegeneinander antreten. Geeignet für den Unterricht in BWP/R. ",
         link: "https://pmg.gnmyt.dev/",
         icon: PerfectMarketIcon,
         label: "Neu",
