@@ -2,18 +2,13 @@ import "./styles.sass";
 import BackCard from "@/common/components/BackCard";
 import ContactCard from "@/pages/Contact/components/ContactCard";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
-import {faDiscord, faGithub, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub, faInstagram} from "@fortawesome/free-brands-svg-icons";
 
 const methods = [
     {
         icon: faEnvelope,
         link: "mailto:contact@gnmyt.dev",
         text: <>Schreibe mir eine E-Mail an <span>contact@gnmyt.dev</span></>
-    },
-    {
-        icon: faTwitter,
-        link: "https://twitter.com/germannewsmaker",
-        text: <>Schreibe mir auf Twitter <span>@germannewsmaker</span></>
     },
     {
         icon: faInstagram,
