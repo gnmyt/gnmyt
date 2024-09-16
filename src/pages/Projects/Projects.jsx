@@ -10,6 +10,7 @@ import SheepstarIcon from "@/common/images/apps/sheepstar.png";
 import NextermIcon from "@/common/images/apps/nexterm.png";
 import SierraIcon from "@/common/images/apps/sierra.png";
 import DualbootIcon from "@/common/images/apps/dualbootmgr.png";
+import SpigotIcon from "@/common/images/apps/spigot.png";
 import Contributed from "@/pages/Projects/components/Contributed";
 
 const projects = [
@@ -64,7 +65,7 @@ const projects = [
         description: "Auf meinem Spigot-Profil findest du weitere Plugins, welche Ich erstellt habe. " +
             "Dazu gehört beispielsweise RandSystem oder SimpleMaintenance.",
         link: "https://www.spigotmc.org/resources/authors/gnmyt.589670/",
-        icon: "https://static.spigotmc.org/img/spigot.png"
+        icon: SpigotIcon
     }
 ]
 
