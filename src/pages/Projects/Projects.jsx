@@ -9,6 +9,7 @@ import LicenseIcon from "@/common/images/apps/licenseapi.png";
 import SheepstarIcon from "@/common/images/apps/sheepstar.png";
 import NextermIcon from "@/common/images/apps/nexterm.png";
 import SierraIcon from "@/common/images/apps/sierra.png";
+import DualbootIcon from "@/common/images/apps/dualbootmgr.png";
 import Contributed from "@/pages/Projects/components/Contributed";
 
 const projects = [
@@ -37,6 +38,12 @@ const projects = [
             "Die Software bietet ein umfangreiches Dashboard für das Verwalten von Plugins, Spielern und mehr.",
         link: "https://mcdash.gnmyt.dev/",
         icon: MCIcon
+    },
+    {
+        name: "Dualboot Manager",
+        description: "Ermöglicht die Installation und Konfiguration des CLOVER-Bootloaders mit nur wenigen Klicks",
+        link: "https://dualboot.gnmyt.dev/",
+        icon: DualbootIcon
     },
     {
         name: "AutoResponder-Integration",
