@@ -17,8 +17,8 @@ const methods = [
     },
     {
         icon: faDiscord,
-        link: "https://discord.com/users/386242172632170496",
-        text: <>Schreibe mir auf Discord unter <span>GNM#0001</span></>
+        link: "https://dc.gnmyt.dev",
+        text: <>Tritt meinem Discord-Server unter <span>dc.gnmyt.dev</span> bei</>
     },
     {
         icon: faGithub,
