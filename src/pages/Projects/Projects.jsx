@@ -7,34 +7,36 @@ import SQLIcon from "@/common/images/apps/sqltoolkit.png";
 import MCIcon from "@/common/images/apps/mcdash.png";
 import LicenseIcon from "@/common/images/apps/licenseapi.png";
 import SheepstarIcon from "@/common/images/apps/sheepstar.png";
+import NextermIcon from "@/common/images/apps/nexterm.png";
 import SierraIcon from "@/common/images/apps/sierra.png";
-import BFSIcon from "@/common/images/apps/bfs2of.png";
-import PerfectMarketIcon from "@/common/images/apps/pmg.png";
-import PowerToolsIcon from "@/common/images/apps/powertools.png";
 import Contributed from "@/pages/Projects/components/Contributed";
 
 const projects = [
     {
-        name: "Perfect Market Game",
-        description: "Lerne spielerisch den vollkommenen Markt in deiner Klasse kennen und lass deine Mitschüler" +
-            " im Wettbewerb gegeneinander antreten. Geeignet für den Unterricht in BWP/R. ",
-        link: "https://pmg.gnmyt.dev/",
-        icon: PerfectMarketIcon,
-        label: "Neu",
-    },
-    {
-        name: "PowerTools",
-        description: "PowerTools bietet dir verschiedene Tools um deinen Alltag zu erleichtern. " +
-            "Dazu gehört beispielsweise ein Passwort-Generator, ein QR-Code-Generator und mehr. ",
-        link: "https://tools.gnmyt.dev/",
-        icon: PowerToolsIcon,
+        name: "Nexterm",
+        description: "Die kostenfreie Open-Source-Serververwaltungssoftware für SSH, VNC & RDP. ",
+        link: "https://nexterm.dev/",
+        icon: NextermIcon
     },
     {
         name: "MySpeed",
         description: "MySpeed hilft dir, den Überblick über dein Internet zu behalten. Erstelle automatisierte Speedtests " +
             "und lasse dir alle in einer Liste anzeigen.",
-        link: "https://myspeed.gnmyt.dev/",
+        link: "https://myspeed.dev/",
         icon: MySpeedIcon
+    },
+    {
+        name: "LicenseAPI",
+        description: "Die perfekte Lösung, Projekte ohne großen Aufwand zu lizenzieren.",
+        link: "https://licenseapi.gnmyt.dev/",
+        icon: LicenseIcon
+    },
+    {
+        name: "MCDash",
+        description: "Eine kostenlose Verwaltungs-Software für Spigot & Bungeecord-Server. " +
+            "Die Software bietet ein umfangreiches Dashboard für das Verwalten von Plugins, Spielern und mehr.",
+        link: "https://mcdash.gnmyt.dev/",
+        icon: MCIcon
     },
     {
         name: "AutoResponder-Integration",
@@ -51,13 +53,6 @@ const projects = [
         icon: SQLIcon
     },
     {
-        name: "MCDash",
-        description: "Eine kostenlose Verwaltungs-Software für Spigot & Bungeecord-Server. " +
-            "Die Software bietet ein umfangreiches Dashboard für das Verwalten von Plugins, Spielern und mehr.",
-        link: "https://mcdash.gnmyt.dev/",
-        icon: MCIcon
-    },
-    {
         name: "Minecraft Plugins",
         description: "Auf meinem Spigot-Profil findest du weitere Plugins, welche Ich erstellt habe. " +
             "Dazu gehört beispielsweise RandSystem oder SimpleMaintenance.",
@@ -67,12 +62,6 @@ const projects = [
 ]
 
 const contributed = [
-    {
-        name: "LicenseAPI",
-        description: "Die perfekte Lösung, Projekte ohne großen Aufwand zu lizenzieren.",
-        link: "https://github.com/LicenseAPI",
-        icon: LicenseIcon
-    },
     {
         name: "Sheepstar",
         description: "Der modulare Discord Bot, der deinen Discord Server einzigartig macht.",
@@ -84,14 +73,7 @@ const contributed = [
         description: "Ein Team mit viel Kreativität. Leitet unter anderem Projekte wie den Störungsmelder oder MC-Leben",
         link: "https://sierra-dev.de/",
         icon: SierraIcon
-    },
-    {
-        name: "BFS2OF",
-        description: "Eine Gruppenarbeit innerhalb der Berufsschule. " +
-            "Wir haben eine Website erstellt, welche Quizzes innerhalb einer Klasse ermöglicht.",
-        link: "https://github.com/BFS2OF",
-        icon: BFSIcon
-    },
+    }
 ]
 
 export const Projects = () => (
