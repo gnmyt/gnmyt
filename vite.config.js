@@ -3,7 +3,6 @@ import path from "path";
 
 export default {
     plugins: [react()],
-    build: {outDir: 'build'},
     css: {
         preprocessorOptions: {
             sass: {
