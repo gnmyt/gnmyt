@@ -1,24 +1,12 @@
-import "@/common/styles/main.sass";
-import "@/common/styles/_fonts.sass";
-import Home from "@/pages/Home";
-import Contact from "@/pages/Contact";
-import Projects from "@/pages/Projects";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Privacy from "@/pages/Privacy";
-import Imprint from "@/pages/Imprint";
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
 
-export const App = () => (
+import "@/common/styles/main.sass";
+
+export default () => (
     <>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/imprint" element={<Imprint />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
-        </BrowserRouter>
+
     </>
 );
-
-export default App;
