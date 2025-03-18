@@ -1,0 +1,40 @@
+@use "@/common/styles/colors" as *
+
+.home-page
+  margin-top: 5rem
+  display: flex
+  justify-content: center
+  align-items: center
+  h1
+    font-size: 3rem
+    width: 40rem
+    text-align: center
+
+    span
+      color: $primary
+
+
+
+.orbit-container
+  position: fixed
+  left: 0
+  right: 0
+  display: flex
+  justify-content: center
+  bottom: -40rem
+
+  .orbit-ring
+    border: 2px solid $stroke
+    border-radius: 100%
+
+  .orbit-ring-outer
+    position: absolute
+    bottom: 10rem
+    width: 80vh
+    height: 80vh
+
+  .orbit-ring-inner
+    position: absolute
+    bottom: 0
+    width: 60vw
+    height: 60vw
