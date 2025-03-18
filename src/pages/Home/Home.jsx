@@ -1,62 +1,59 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import "./styles.sass";
 
 export const Home = () => {
     const outerRingRef = useRef(null);
     const innerRingRef = useRef(null);
+    const [outerPlanets, setOuterPlanets] = useState([]);
+    const [innerPlanets, setInnerPlanets] = useState([]);
+
+    useEffect(() => {
+        const outerPlanetsData = Array.from({length: 4}, (_, i) => ({
+            id: `outer-${i}`,
+            speed: 0.25 + (i * 0.1),
+            offset: i * (Math.PI / 2),
+            x: 0,
+            y: 0,
+        }));
+
+        const innerPlanetsData = Array.from({length: 2}, (_, i) => ({
+            id: `inner-${i}`,
+            speed: 0.4 + (i * 0.15),
+            offset: i * Math.PI,
+            x: 0,
+            y: 0,
+        }));
+
+        setOuterPlanets(outerPlanetsData);
+        setInnerPlanets(innerPlanetsData);
+    }, []);
 
     useEffect(() => {
         const outerRing = outerRingRef.current;
         const innerRing = innerRingRef.current;
 
-        if (!outerRing || !innerRing) return;
-
-        const outerPlanets = [];
-        for (let i = 0; i < 4; i++) {
-            const planet = document.createElement("div");
-            planet.className = "planet";
-            planet.dataset.speed = (0.25 + (i * 0.1)).toString();
-            planet.dataset.offset = (i * (Math.PI / 2)).toString();
-            outerRing.appendChild(planet);
-            outerPlanets.push(planet);
-        }
-
-        const innerPlanets = [];
-        for (let i = 0; i < 2; i++) {
-            const planet = document.createElement("div");
-            planet.className = "planet";
-            planet.dataset.speed = (0.4 + (i * 0.15)).toString();
-            planet.dataset.offset = (i * Math.PI).toString();
-            innerRing.appendChild(planet);
-            innerPlanets.push(planet);
-        }
+        if (!outerRing || !innerRing || outerPlanets.length === 0 || innerPlanets.length === 0) return;
 
         const animatePlanets = () => {
             const time = Date.now() * 0.001;
 
-            outerPlanets.forEach(planet => {
-                const speed = parseFloat(planet.dataset.speed);
-                const offset = parseFloat(planet.dataset.offset);
-                const angle = (time * speed + offset) % (Math.PI * 2);
-
+            setOuterPlanets(prevPlanets => prevPlanets.map(planet => {
+                const angle = (time * planet.speed + planet.offset) % (Math.PI * 2);
                 const radius = outerRing.offsetWidth / 2;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
-                planet.style.transform = `translate(${x}px, ${y}px)`;
-            });
+                return {...planet, x, y};
+            }));
 
-            innerPlanets.forEach(planet => {
-                const speed = parseFloat(planet.dataset.speed);
-                const offset = parseFloat(planet.dataset.offset);
-                const angle = (time * speed + offset) % (Math.PI * 2);
-
+            setInnerPlanets(prevPlanets => prevPlanets.map(planet => {
+                const angle = (time * planet.speed + planet.offset) % (Math.PI * 2);
                 const radius = innerRing.offsetWidth / 2;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
-                planet.style.transform = `translate(${x}px, ${y}px)`;
-            });
+                return {...planet, x, y};
+            }));
 
             requestAnimationFrame(animatePlanets);
         };
@@ -65,11 +62,12 @@ export const Home = () => {
 
         return () => {
             cancelAnimationFrame(animationId);
-
-            outerPlanets.forEach(planet => planet.remove());
-            innerPlanets.forEach(planet => planet.remove());
         };
-    }, []);
+    }, [outerPlanets.length, innerPlanets.length]);
+
+    const handlePlanetClick = (planetId) => {
+        console.log(`Planet clicked: ${planetId}`);
+    };
 
     return (
         <div className="home-page">
@@ -77,7 +75,19 @@ export const Home = () => {
 
             <div className="orbit-container">
                 <div className="orbit-ring orbit-ring-inner" ref={innerRingRef}>
+                    {innerPlanets.map(planet => (
+                        <div key={planet.id} className="planet" onClick={() => handlePlanetClick(planet.id)}
+                             style={{transform: `translate(${planet.x}px, ${planet.y}px)`}}>
+                            <img src="https://place-hold.it/500x500.png" alt="Planet Logo"/>
+                        </div>
+                    ))}
                     <div className="orbit-ring orbit-ring-outer" ref={outerRingRef}>
+                        {outerPlanets.map(planet => (
+                            <div key={planet.id} className="planet" onClick={() => handlePlanetClick(planet.id)}
+                                 style={{transform: `translate(${planet.x}px, ${planet.y}px)`}}>
+                                <img src="https://place-hold.it/500x500.png" alt="Planet Logo"/>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
