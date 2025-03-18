@@ -1,0 +1,42 @@
+@use "@/common/styles/colors" as *
+
+nav
+  display: flex
+  justify-content: space-between
+  margin: 2rem 8rem
+
+  .title-area
+    display: flex
+    align-items: center
+    gap: 1rem
+
+    img
+      width: 3rem
+      height: 3rem
+      border-radius: 10rem
+
+    h1
+      margin: 0
+      font-size: 2.5rem
+
+    span
+      color: $primary
+      font-weight: 500
+
+  .nav-area
+    display: flex
+    align-items: center
+    gap: 1rem
+
+    a
+      text-transform: uppercase
+      color: $text
+      text-decoration: none
+      font-size: 1.5rem
+
+
+    .nav-divider
+      width: 0.5rem
+      height: 0.5rem
+      border-radius: 100%
+      background-color: $text-light
