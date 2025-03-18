@@ -10,7 +10,7 @@ export const Home = () => {
     useEffect(() => {
         const outerPlanetsData = Array.from({length: 4}, (_, i) => ({
             id: `outer-${i}`,
-            speed: 0.25 + (i * 0.1),
+            speed: 0.05 + (i * 0.02),
             offset: i * (Math.PI / 2),
             x: 0,
             y: 0,
@@ -18,7 +18,7 @@ export const Home = () => {
 
         const innerPlanetsData = Array.from({length: 2}, (_, i) => ({
             id: `inner-${i}`,
-            speed: 0.4 + (i * 0.15),
+            speed: 0.08 + (i * 0.03),
             offset: i * Math.PI,
             x: 0,
             y: 0,
