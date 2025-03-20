@@ -1,0 +1,62 @@
+@use "@/common/styles/colors" as *
+
+.not-found-page
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 2rem
+
+  .content
+    text-align: center
+    background: rgba($background, 0.8)
+    backdrop-filter: blur(10px)
+    padding: 3rem 4rem
+    border-radius: 1.5rem
+    border: 1px solid $stroke
+    max-width: 500px
+
+    h1
+      font-size: 8rem
+      margin: 0
+      background: linear-gradient(120deg, $text 0%, $primary 70%, darken($primary, 10%) 100%)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+      background-clip: text
+      
+      @media (max-width: 768px)
+        font-size: 6rem
+
+    h2
+      font-size: 2.5rem
+      color: $text
+      margin: 0.5rem 0 1.5rem
+      
+      @media (max-width: 768px)
+        font-size: 2rem
+
+    p
+      font-size: 1.2rem
+      color: $text-light
+      margin-bottom: 2.5rem
+      line-height: 1.6
+      
+      @media (max-width: 768px)
+        font-size: 1.1rem
+
+    .home-button
+      display: inline-block
+      background: linear-gradient(135deg, rgba($primary, 0.8), rgba($primary, 0.6))
+      color: $text 
+      padding: 1rem 2.5rem
+      border-radius: 12px
+      text-decoration: none
+      font-weight: 600
+      border: 1px solid rgba($primary, 0.4)
+      backdrop-filter: blur(5px)
+      box-shadow: 0 4px 15px rgba($primary, 0.2)
+      transition: all 0.3s ease
+
+      &:hover
+        box-shadow: 0 8px 20px rgba($primary, 0.3)
+        background: linear-gradient(135deg, rgba($primary, 0.9), rgba($primary, 0.7))
