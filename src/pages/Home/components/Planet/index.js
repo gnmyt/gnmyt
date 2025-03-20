@@ -1,0 +1,1 @@
+export {Planet as default} from "./Planet.jsx";
