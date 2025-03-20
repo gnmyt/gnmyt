@@ -15,7 +15,7 @@ export const Navigation = () => {
         <nav>
             <Link className="title-area">
                 <img src={ProfileImage} alt="Profile" className="profile-image"/>
-                <h1>GNM <span>.dev</span></h1>
+                <h1>GNM<span>.dev</span></h1>
             </Link>
             <div className="nav-area">
                 {Object.keys(navigation).map(key => (
