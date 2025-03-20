@@ -39,7 +39,7 @@ export const PROJECT_DATA = [
         ]
     },
     {
-        name: "License API",
+        name: "LicenseAPI",
         logo: LicenseAPIImage,
         link: "https://licenseapi.gnm.dev/",
         description: "A robust API for software license management. Handles license creation, validation, and activation with secure endpoints and comprehensive documentation.",
@@ -72,9 +72,9 @@ export const PROJECT_DATA = [
         technologies: ["React", "Electron", "Node.js"],
         year: "2024",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/dualboot/1.png'),
+            () => import('@/pages/Projects/screenshots/dualboot/2.png'),
+            () => import('@/pages/Projects/screenshots/dualboot/3.png')
         ]
     },
     {
