@@ -6,24 +6,56 @@
   justify-content: space-between
   align-items: center
   margin: 0 8rem
+  padding: 2rem 0
+  transition: all 0.3s ease-in-out
 
+  @media (max-width: 1200px)
+    flex-direction: column
+    margin: 0 4rem
+    gap: 2rem
+    align-items: flex-start
+    justify-content: flex-start
+    
+  @media (max-width: 768px)
+    margin: 0 2rem
+    padding: 1rem 0
+    
   .info-area
     width: 30rem
-
+    transition: all 0.3s ease
+    
+    @media (max-width: 1200px)
+      width: 100%
+      margin-bottom: 1rem
+      
+    @media (max-width: 768px)
+      width: 100%
+      
   h1
     font-size: 2.5rem
     color: $text
-
+    margin-bottom: 1rem
+    
+    @media (max-width: 768px)
+      font-size: 2rem
+      
   h2
     font-size: 1.5rem
     font-weight: 500
     color: $text-light
-
+    line-height: 1.6
+    
+    @media (max-width: 768px)
+      font-size: 1.2rem
 
 .social-platforms
   display: grid
   grid-template-columns: repeat(2, 1fr)
   gap: 2rem
+  
+  @media (max-width: 900px)
+    grid-template-columns: 1fr
+  
   .social-platform
     display: flex
     flex-direction: column
@@ -34,7 +66,20 @@
     color: $text
     border: 1px solid $stroke
     border-radius: 1.25rem
-
+    transition: all 0.3s ease
+    background-color: rgba(255, 255, 255, 0.03)
+    backdrop-filter: blur(5px)
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05)
+    
+    @media (max-width: 768px)
+      padding: 1.5rem
+      
+    &:hover
+      border-color: rgba($text, 0.3)
+      background-color: rgba(255, 255, 255, 0.06)
+      transform: translateY(-4px)
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08)
+    
     .platform-icon
       font-size: 1.25rem
       display: flex
@@ -43,46 +88,100 @@
       padding: 1rem
       border: 1px solid $stroke
       border-radius: 1.25rem
-
+      transition: all 0.3s ease
+      color: $text
+      background-color: rgba(255, 255, 255, 0.05)
+      
+      &:hover
+        border-color: rgba($text, 0.3)
+        background-color: rgba(255, 255, 255, 0.1)
+    
     .platform-info
       display: flex
       flex-direction: column
-
       h1
         font-size: 1.5rem
         margin: 0.5rem 0
         color: $text
+        transition: color 0.3s ease
+        
+        @media (max-width: 768px)
+          font-size: 1.3rem
+          
       p
         font-size: 1rem
         margin: 0
         color: $text-light
+        line-height: 1.5
+        
+        @media (max-width: 768px)
+          font-size: 0.9rem
 
 .contact-area
   display: flex
   flex-direction: column
   gap: 2rem
   width: 44rem
-
+  transition: all 0.3s ease
+  
+  @media (max-width: 1200px)
+    width: 100%
+    
   .donation-area
     display: flex
     align-items: center
-    border: 1px solid $stroke
+    border: 1px solid rgba($primary, 0.3)
     border-radius: 1.25rem
-    padding: 1rem 2rem
+    padding: 1.5rem 2rem
     gap: 2rem
     text-decoration: none
+    transition: all 0.3s ease
+    background-color: rgba($primary, 0.05)
+    backdrop-filter: blur(5px)
+    box-shadow: 0 4px 10px rgba($primary, 0.1)
+    position: relative
+    overflow: hidden
 
+    &::before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: radial-gradient(circle at top right, rgba($primary, 0.1), transparent 70%)
+      z-index: -1
+    
+    @media (max-width: 768px)
+      flex-direction: column
+      align-items: flex-start
+      padding: 1.5rem
+      gap: 1rem
+    
+    &:hover
+      border-color: rgba($primary, 0.6)
+      background-color: rgba($primary, 0.08)
+      transform: translateY(-4px)
+      box-shadow: 0 8px 20px rgba($primary, 0.15)
+    
     h1
       font-size: 1.5rem
       margin: 0.5rem 0
       color: $text
-
+      transition: color 0.3s ease
+      
+      @media (max-width: 768px)
+        font-size: 1.3rem
+        
     p
       margin: 0
       font-size: 1rem
       color: $text-light
-
-
+      line-height: 1.5
+      
+      @media (max-width: 768px)
+        font-size: 0.9rem
+      
     .icon-area
       font-size: 1.25rem
       display: flex
@@ -90,5 +189,13 @@
       align-items: center
       padding: 1rem
       color: $primary
-      border: 1px solid $stroke
+      border: 1px solid rgba($primary, 0.3)
       border-radius: 1.25rem
+      transition: all 0.3s ease
+      background-color: rgba($primary, 0.08)
+      box-shadow: 0 4px 8px rgba($primary, 0.1)
+      
+      &:hover
+        border-color: rgba($primary, 0.6)
+        background-color: rgba($primary, 0.15)
+        box-shadow: 0 6px 12px rgba($primary, 0.15)
