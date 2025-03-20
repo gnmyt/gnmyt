@@ -7,19 +7,34 @@ import {useBackground} from "@/common/components/Background/BackgroundContext";
 
 import {PROJECT_DATA} from "@/pages/Projects/Projects.jsx";
 
+const useMediaQuery = (query) => {
+    const [matches, setMatches] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        setMatches(media.matches);
+
+        const listener = (e) => setMatches(e.matches);
+        media.addEventListener("change", listener);
+        return () => media.removeEventListener("change", listener);
+    }, [query]);
+
+    return matches;
+};
+
 const createPlanets = (count, prefix, speed, startIndex = 0) => Array.from({length: count}, (_, i) => {
     const projectIndex = startIndex + i;
     return {...PROJECT_DATA[projectIndex], speed, offset: i * 5, x: 0, y: 0, visible: true, lastAngle: i * 5};
 });
 
-const isPlanetVisible = (y) => y < 0;
+const isPlanetVisible = (y, isMobile) => isMobile ? true : y < 0;
 
-const updatePlanetPositions = (planets, time, radius) =>
+const updatePlanetPositions = (planets, time, radius, isMobile) =>
     planets.map(planet => {
         const angle = (time * planet.speed + planet.offset) % (Math.PI * 2);
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
-        const currentlyVisible = isPlanetVisible(y);
+        const currentlyVisible = isPlanetVisible(y, isMobile);
 
         if (planet.visible && !currentlyVisible) {
             const newAngle = (angle + Math.PI) % (Math.PI * 2);
@@ -38,15 +53,17 @@ export const Home = () => {
     const [outerPlanets, setOuterPlanets] = useState([]);
     const [innerPlanets, setInnerPlanets] = useState([]);
     const {setCircles} = useBackground();
+    const isMobile = useMediaQuery("(max-width: 1024px)");
 
     useEffect(() => {
-        setOuterPlanets(createPlanets(2, 'outer', 0.04, 0));
-        setInnerPlanets(createPlanets(4, 'inner', 0.06, 2));
+        const baseSpeed = isMobile ? 0.03 : 0.04;
+        setOuterPlanets(createPlanets(2, 'outer', baseSpeed, 0));
+        setInnerPlanets(createPlanets(4, 'inner', baseSpeed * 1.5, 2));
 
         setCircles([{bottom: '-20rem', size: '35rem'}]);
 
         return () => setCircles([]);
-    }, [setCircles]);
+    }, [setCircles, isMobile]);
 
     useEffect(() => {
         const outerRing = outerRingRef.current;
@@ -57,15 +74,15 @@ export const Home = () => {
         const animatePlanets = () => {
             const time = Date.now() * 0.001;
 
-            setOuterPlanets(prev => updatePlanetPositions(prev, time, outerRing.offsetWidth / 2));
-            setInnerPlanets(prev => updatePlanetPositions(prev, time, innerRing.offsetWidth / 2));
+            setOuterPlanets(prev => updatePlanetPositions(prev, time, outerRing.offsetWidth / 2, isMobile));
+            setInnerPlanets(prev => updatePlanetPositions(prev, time, innerRing.offsetWidth / 2, isMobile));
 
             requestAnimationFrame(animatePlanets);
         };
 
         const animationId = requestAnimationFrame(animatePlanets);
         return () => cancelAnimationFrame(animationId);
-    }, [outerPlanets.length, innerPlanets.length]);
+    }, [outerPlanets.length, innerPlanets.length, isMobile]);
 
     const handlePlanetClick = (planetName) => {
         const project = [...outerPlanets, ...innerPlanets].find(p => p.name === planetName);
@@ -77,11 +94,10 @@ export const Home = () => {
     return (
         <motion.div className="home-page">
             <Title/>
-
             <motion.div
                 className="orbit-container"
                 initial={{opacity: 0, bottom: "-120rem"}}
-                animate={{opacity: 1, bottom: "-60rem"}}
+                animate={{opacity: 1, bottom: isMobile ? "-30rem" : "-60rem"}}
                 exit={{opacity: 0, bottom: "-120rem"}}
                 transition={{duration: 0.8, ease: "easeInOut"}}>
                 <div className="orbit-ring orbit-ring-inner" ref={innerRingRef}>

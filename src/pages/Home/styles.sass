@@ -4,34 +4,61 @@
   margin-top: 5rem
   display: flex
   justify-content: center
-  align-items: center
+  align-items: flex-start
+  min-height: 100vh
+  overflow: hidden
+  position: relative
+
+  @media (max-width: 768px)
+    margin-top: 2rem
+    padding-top: 3rem
 
 .orbit-container
   position: fixed
   left: 0
   right: 0
+  bottom: -40rem
   display: flex
   justify-content: center
+  overflow: visible
+  z-index: 1
+  min-width: min(90rem, 100vw)
+
+  @media (max-width: 1024px)
+    bottom: -20rem
+
+  @media (max-width: 768px)
+    bottom: 10rem
+
   .orbit-ring
     border: 2px solid $stroke
-    border-radius: 100%
+    border-radius: 50%
     position: relative
+    transform-origin: center
+    aspect-ratio: 1/1
+    min-width: 30rem
+    min-height: 30rem
+
   .orbit-ring-outer
-    width: 60rem
-    height: 60rem
+    width: clamp(30rem, 60vw, 60rem)
+    height: clamp(30rem, 60vw, 60rem)
+    min-width: 30rem
+    min-height: 30rem
     .planet
-      width: 6rem
-      height: 6rem
+      width: clamp(4rem, 6vw, 6rem)
+      height: clamp(4rem, 6vw, 6rem)
       margin: -3rem
+
   .orbit-ring-inner
     display: flex
     align-items: center
     justify-content: center
-    bottom: 0
-    width: 90rem
-    height: 90rem
-    
+    width: clamp(45rem, 90vw, 90rem)
+    height: clamp(45rem, 90vw, 90rem)
+    min-width: 45rem
+    min-height: 45rem
+
     .planet
-      width: 7rem
-      height: 7rem
+      width: clamp(5rem, 7vw, 7rem)
+      height: clamp(5rem, 7vw, 7rem)
       margin: -3.5rem
