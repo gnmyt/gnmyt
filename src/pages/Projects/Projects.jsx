@@ -59,9 +59,9 @@ export const PROJECT_DATA = [
         technologies: ["React", "WebSockets", "Java API", "Minecraft APIs"],
         year: "2021",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/mcdash/1.png'),
+            () => import('@/pages/Projects/screenshots/mcdash/2.png'),
+            () => import('@/pages/Projects/screenshots/mcdash/3.png')
         ]
     },
     {
