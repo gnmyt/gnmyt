@@ -64,19 +64,19 @@ export const ProjectItem = ({project, index}) => {
 
                     <div className="project-info">
                         <div className="project-title-row">
-                            <h2 className="project-title">{project.name}</h2>
-                            <p className="project-year">{project.year}</p>
+                            <div className="title-group">
+                                <h2 className="project-title">{project.name}</h2>
+                                <p className="project-year">{project.year}</p>
+                            </div>
+                            <a href={project.link} className="project-link" target="_blank" rel="noopener noreferrer">
+                                Visit Project
+                            </a>
                         </div>
-
                         <p className="project-description">{project.description}</p>
 
                         <div className="project-technologies">
                             {project.technologies.map(tech => (<span key={tech} className="tech-tag">{tech}</span>))}
                         </div>
-
-                        <a href={project.link} className="project-link" target="_blank"
-                           rel="noopener noreferrer">Visit Project
-                        </a>
                     </div>
                 </div>
 
