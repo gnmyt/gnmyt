@@ -3,6 +3,7 @@ import "./styles.sass";
 import Planet from "@/pages/Home/components/Planet";
 import {motion} from "framer-motion";
 import Title from "@/pages/Home/components/Title";
+import {useBackground} from "@/common/components/Background/BackgroundContext";
 
 import DualbootManagerImage from "@/common/images/projects/DualbootManager.png";
 import LicenseAPIImage from "@/common/images/projects/LicenseAPI.png";
@@ -50,11 +51,16 @@ export const Home = () => {
     const innerRingRef = useRef(null);
     const [outerPlanets, setOuterPlanets] = useState([]);
     const [innerPlanets, setInnerPlanets] = useState([]);
+    const {setCircles} = useBackground();
 
     useEffect(() => {
         setOuterPlanets(createPlanets(2, 'outer', 0.04, 0));
         setInnerPlanets(createPlanets(4, 'inner', 0.06, 2));
-    }, []);
+
+        setCircles([{bottom: '-20rem', size: '35rem'}]);
+
+        return () => setCircles([]);
+    }, [setCircles]);
 
     useEffect(() => {
         const outerRing = outerRingRef.current;
