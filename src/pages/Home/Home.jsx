@@ -5,25 +5,11 @@ import {motion} from "framer-motion";
 import Title from "@/pages/Home/components/Title";
 import {useBackground} from "@/common/components/Background/BackgroundContext";
 
-import DualbootManagerImage from "@/common/images/projects/DualbootManager.png";
-import LicenseAPIImage from "@/common/images/projects/LicenseAPI.png";
-import MCDashImage from "@/common/images/projects/MCDash.png";
-import MySpeedImage from "@/common/images/projects/MySpeed.png";
-import NextermImage from "@/common/images/projects/Nexterm.png";
-import QuizzleImage from "@/common/images/projects/Quizzle.png";
-
-const projects = [
-    {name: "Dualboot Manager", image: DualbootManagerImage, link: "https://dualboot.gnm.dev/"},
-    {name: "License API", image: LicenseAPIImage, link: "https://licenseapi.gnm.dev/"},
-    {name: "MCDash", image: MCDashImage, link: "https://mcdash.gnm.dev"},
-    {name: "MySpeed", image: MySpeedImage, link: "https://myspeed.dev/"},
-    {name: "Nexterm", image: NextermImage, link: "https://nexterm.dev"},
-    {name: "Quizzle", image: QuizzleImage, link: "https://github.com/gnmyt/Quizzle"}
-];
+import {PROJECT_DATA} from "@/pages/Projects/Projects.jsx";
 
 const createPlanets = (count, prefix, speed, startIndex = 0) => Array.from({length: count}, (_, i) => {
     const projectIndex = startIndex + i;
-    return {...projects[projectIndex], speed, offset: i * 5, x: 0, y: 0, visible: true, lastAngle: i * 5};
+    return {...PROJECT_DATA[projectIndex], speed, offset: i * 5, x: 0, y: 0, visible: true, lastAngle: i * 5};
 });
 
 const isPlanetVisible = (y) => y < 0;

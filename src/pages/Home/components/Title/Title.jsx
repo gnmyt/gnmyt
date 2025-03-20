@@ -9,7 +9,7 @@ export const Title = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex(prevIndex => (prevIndex + 1) % words.length);
-        }, 3000);
+        }, 2000);
 
         return () => clearInterval(interval);
     }, [words.length]);
