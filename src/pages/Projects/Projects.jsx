@@ -20,9 +20,9 @@ export const PROJECT_DATA = [
         technologies: ["Node.js", "React", "Guacamole"],
         year: "2024",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/nexterm/1.png'),
+            () => import('@/pages/Projects/screenshots/nexterm/2.png'),
+            () => import('@/pages/Projects/screenshots/nexterm/3.png')
         ]
     },
     {
@@ -33,9 +33,9 @@ export const PROJECT_DATA = [
         technologies: ["Node.js", "React", "Chart.js", "Ookla", "Cloudflare Speed", "LibreSpeed"],
         year: "2022",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/myspeed/1.png'),
+            () => import('@/pages/Projects/screenshots/myspeed/2.png'),
+            () => import('@/pages/Projects/screenshots/myspeed/3.png')
         ]
     },
     {
