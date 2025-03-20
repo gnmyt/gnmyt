@@ -1,0 +1,163 @@
+@use "@/common/styles/colors" as *
+
+.project-item
+  width: 100%
+
+  .project-header
+    display: flex
+    gap: 2.5rem
+    margin-bottom: 2.5rem
+
+    @media (max-width: 768px)
+      flex-direction: column
+      align-items: center
+      gap: 1.5rem
+
+    .project-logo-container
+      flex-shrink: 0
+      width: 120px
+      height: 120px
+      border-radius: 18px
+      overflow: hidden
+      background-color: $background
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35)
+      transition: all 0.3s ease
+
+      .project-logo
+        width: 100%
+        height: 100%
+
+    .project-info
+      .project-title-row
+        display: flex
+        align-items: center
+        gap: 1rem
+        margin-bottom: 0.8rem
+
+        @media (max-width: 576px)
+          flex-direction: column
+          align-items: flex-start
+          gap: 0.2rem
+
+        .project-title
+          font-size: 2.2rem
+          color: $text
+          margin: 0
+          font-weight: 600
+
+        .project-year
+          color: $primary
+          font-size: 1rem
+          font-weight: 500
+          margin: 0
+          padding: 0.25rem 0.8rem
+          background: rgba($primary, 0.12)
+          border-radius: 20px
+          border: 1px solid rgba($primary, 0.4)
+
+      .project-description
+        color: $text-light
+        line-height: 1.7
+        margin-bottom: 1.8rem
+        font-size: 1.05rem
+        max-width: 800px
+
+      .project-technologies
+        display: flex
+        flex-wrap: wrap
+        gap: 0.6rem
+        margin-bottom: 1.8rem
+
+        .tech-tag
+          background: rgba($primary, 0.15)
+          color: $text-light
+          padding: 0.35rem 0.8rem
+          border-radius: 50px
+          font-size: 0.85rem
+          border: 1px solid rgba($primary, 0.3)
+          transition: all 0.25s ease
+
+          &:hover
+            background: rgba($primary, 0.3)
+            transform: translateY(-3px)
+            box-shadow: 0 5px 10px rgba($primary, 0.2)
+
+      .project-link
+        display: inline-block
+        background: $primary
+        color: $text
+        padding: 0.8rem 1.5rem
+        border-radius: 6px
+        text-decoration: none
+        font-weight: 600
+        transition: all 0.25s ease
+
+        &:hover
+          transform: translateY(-4px)
+          box-shadow: 0 8px 15px rgba($primary, 0.3)
+
+  .project-screenshots
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))
+    gap: 1.8rem
+    width: 100%
+
+    .screenshot-container
+      border-radius: 14px
+      overflow: hidden
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3)
+      position: relative
+      transition: all 0.3s ease
+      aspect-ratio: 16 / 9
+
+      .screenshot-loading
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba($background, 0.9)
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 14px
+
+        .loading-pulse
+          width: 80px
+          height: 80px
+          border-radius: 50%
+          background: rgba($primary, 0.2)
+          position: relative
+
+          &::before, &::after
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            width: 100%
+            height: 100%
+            border-radius: 50%
+            background: rgba($primary, 0.2)
+            transform: translate(-50%, -50%)
+            animation: pulse 2s ease-out infinite
+
+          &::after
+            animation-delay: 0.5s
+
+      &:hover
+        transform: translateY(-8px)
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35)
+
+      .screenshot-image
+        width: 100%
+        height: 100%
+        border-radius: 14px
+        display: block
+        object-fit: cover
+        transition: all 0.5s ease
+
+  .project-divider
+    height: 1px
+    background: linear-gradient(to right, transparent, $stroke, transparent)
+    margin-top: 3.5rem
+    width: 100%
