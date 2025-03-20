@@ -12,20 +12,38 @@ const navigation = {
 
 export const Navigation = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
+    const [isRotating, setIsRotating] = useState(false);
+
     const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+    const handleLogoClick = () => {
+        const newCount = (clickCount + 1) % 4;
+        setClickCount(newCount);
+        
+        if (newCount === 3) {
+            setIsRotating(true);
+            setTimeout(() => {
+                setIsRotating(false);
+                setClickCount(0);
+            }, 1000);
+        }
+    };
 
     return (
         <motion.nav 
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className={mobileMenuOpen ? "mobile-open" : ""}>
-            <Link className="title-area" to="/">
+            <Link className="title-area" to="/" onClick={(e) => e.preventDefault()}>
                 <motion.img 
                     whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    animate={isRotating ? { rotate: 360 } : { rotate: 0 }}
+                    transition={isRotating ? { duration: 1, type: "tween" } : { type: "spring", stiffness: 300 }}
                     src={ProfileImage} 
                     alt="Profile" 
-                    className="profile-image"/>
+                    className="profile-image"
+                    onClick={handleLogoClick}/>
                 <motion.h1
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}>
