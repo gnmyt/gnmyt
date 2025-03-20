@@ -1,0 +1,36 @@
+@use "@/common/styles/colors" as *
+
+footer
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  display: flex
+  justify-content: center
+  padding: 1rem
+  z-index: 100
+
+  .footer-links
+    display: flex
+    align-items: center
+    gap: 1rem
+    background: rgba($background, 0.8)
+    backdrop-filter: blur(10px)
+    padding: 0.5rem 1.5rem
+    border-radius: 2rem
+    border: 1px solid $stroke
+
+    a
+      color: $text-light
+      text-decoration: none
+      font-size: 0.9rem
+      transition: color 0.2s ease
+
+      &:hover
+        color: $text
+
+    .footer-divider
+      width: 0.25rem
+      height: 0.25rem
+      border-radius: 100%
+      background-color: $text-light
