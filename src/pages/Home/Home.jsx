@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import "./styles.sass";
 import Planet from "@/pages/Home/components/Planet";
+import {motion} from "framer-motion";
 
 const createPlanets = (count, prefix, speed) => Array.from({length: count}, (_, i) => ({
     id: `${prefix}-${i}`, speed, offset: i * 5, x: 0, y: 0,
@@ -62,10 +63,21 @@ export const Home = () => {
     };
 
     return (
-        <div className="home-page">
-            <h1>A <span>Full-Stack</span> Software Developer from Germany</h1>
+        <motion.div className="home-page">
+            <motion.h1
+                initial={{opacity: 0, y: "5rem"}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: "-5rem"}}
+                transition={{duration: 0.8, ease: "easeInOut"}}>
+                A <span>Full-Stack</span> Software Developer from Germany
+            </motion.h1>
 
-            <div className="orbit-container">
+            <motion.div
+                className="orbit-container"
+                initial={{opacity: 0, bottom: "-120rem"}}
+                animate={{opacity: 1, bottom: "-60rem"}}
+                exit={{opacity: 0, bottom: "-120rem"}}
+                transition={{duration: 0.8, ease: "easeInOut"}}>
                 <div className="orbit-ring orbit-ring-inner" ref={innerRingRef}>
                     {innerPlanets.map(planet => planet.visible && (
                         <Planet key={planet.id}{...planet} onClick={handlePlanetClick}/>))}
@@ -74,7 +86,7 @@ export const Home = () => {
                             <Planet key={planet.id}{...planet} onClick={handlePlanetClick}/>))}
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
