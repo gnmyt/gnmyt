@@ -4,10 +4,26 @@ import Planet from "@/pages/Home/components/Planet";
 import {motion} from "framer-motion";
 import Title from "@/pages/Home/components/Title";
 
-const createPlanets = (count, prefix, speed) => Array.from({length: count}, (_, i) => ({
-    id: `${prefix}-${i}`, speed, offset: i * 5, x: 0, y: 0,
-    visible: true, lastAngle: i * 5
-}));
+import DualbootManagerImage from "@/common/images/projects/DualbootManager.png";
+import LicenseAPIImage from "@/common/images/projects/LicenseAPI.png";
+import MCDashImage from "@/common/images/projects/MCDash.png";
+import MySpeedImage from "@/common/images/projects/MySpeed.png";
+import NextermImage from "@/common/images/projects/Nexterm.png";
+import QuizzleImage from "@/common/images/projects/Quizzle.png";
+
+const projects = [
+    {name: "Dualboot Manager", image: DualbootManagerImage, link: "https://dualboot.gnm.dev/"},
+    {name: "License API", image: LicenseAPIImage, link: "https://licenseapi.gnm.dev/"},
+    {name: "MCDash", image: MCDashImage, link: "https://mcdash.gnm.dev"},
+    {name: "MySpeed", image: MySpeedImage, link: "https://myspeed.dev/"},
+    {name: "Nexterm", image: NextermImage, link: "https://nexterm.dev"},
+    {name: "Quizzle", image: QuizzleImage, link: "https://github.com/gnmyt/Quizzle"}
+];
+
+const createPlanets = (count, prefix, speed, startIndex = 0) => Array.from({length: count}, (_, i) => {
+    const projectIndex = startIndex + i;
+    return {...projects[projectIndex], speed, offset: i * 5, x: 0, y: 0, visible: true, lastAngle: i * 5};
+});
 
 const isPlanetVisible = (y) => y < 0;
 
@@ -21,8 +37,8 @@ const updatePlanetPositions = (planets, time, radius) =>
         if (planet.visible && !currentlyVisible) {
             const newAngle = (angle + Math.PI) % (Math.PI * 2);
             return {
-                ...planet, x: Math.cos(newAngle) * radius, y: Math.sin(newAngle) * radius,
-                visible: true, lastAngle: newAngle
+                ...planet, x: Math.cos(newAngle) * radius, y: Math.sin(newAngle) * radius, visible: true,
+                lastAngle: newAngle
             };
         }
 
@@ -36,8 +52,8 @@ export const Home = () => {
     const [innerPlanets, setInnerPlanets] = useState([]);
 
     useEffect(() => {
-        setOuterPlanets(createPlanets(2, 'outer', 0.04, Math.PI / 2));
-        setInnerPlanets(createPlanets(4, 'inner', 0.06, Math.PI));
+        setOuterPlanets(createPlanets(2, 'outer', 0.04, 0));
+        setInnerPlanets(createPlanets(4, 'inner', 0.06, 2));
     }, []);
 
     useEffect(() => {
@@ -59,13 +75,16 @@ export const Home = () => {
         return () => cancelAnimationFrame(animationId);
     }, [outerPlanets.length, innerPlanets.length]);
 
-    const handlePlanetClick = (planetId) => {
-        console.log(`Planet clicked: ${planetId}`);
+    const handlePlanetClick = (planetName) => {
+        const project = [...outerPlanets, ...innerPlanets].find(p => p.name === planetName);
+        if (project && project.link) {
+            window.open(project.link, '_blank');
+        }
     };
 
     return (
         <motion.div className="home-page">
-            <Title />
+            <Title/>
 
             <motion.div
                 className="orbit-container"
@@ -75,10 +94,10 @@ export const Home = () => {
                 transition={{duration: 0.8, ease: "easeInOut"}}>
                 <div className="orbit-ring orbit-ring-inner" ref={innerRingRef}>
                     {innerPlanets.map(planet => planet.visible && (
-                        <Planet key={planet.id}{...planet} onClick={handlePlanetClick}/>))}
+                        <Planet key={planet.name} {...planet} onClick={handlePlanetClick}/>))}
                     <div className="orbit-ring orbit-ring-outer" ref={outerRingRef}>
                         {outerPlanets.map(planet => planet.visible && (
-                            <Planet key={planet.id}{...planet} onClick={handlePlanetClick}/>))}
+                            <Planet key={planet.name} {...planet} onClick={handlePlanetClick}/>))}
                     </div>
                 </div>
             </motion.div>
