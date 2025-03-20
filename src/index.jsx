@@ -3,7 +3,9 @@ import {createRoot} from "react-dom/client";
 import App from "./App";
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {Home} from "@/pages/Home/Home.jsx";
-import {Imprint} from "@/pages/Imprint/Imprint";
+import Imprint from "@/pages/Imprint";
+import PrivacyPolicy from "@/pages/Privacy";
+
 
 const root = createRoot(document.getElementById('root'));
 
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
             {path: "/projects", element: <div>Projects</div>},
             {path: "/contact", element: <div>Contact</div>},
             {path: "/imprint", element: <Imprint />},
-            {path: "/privacy", element: <div>Privacy Policy</div>}
+            {path: "/privacy", element: <PrivacyPolicy />}
         ]
     }
 ]);
