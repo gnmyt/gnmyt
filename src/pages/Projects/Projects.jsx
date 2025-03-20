@@ -1,98 +1,126 @@
+import {useEffect} from "react";
+import {motion} from "framer-motion";
+import {useBackground} from "@/common/components/Background/BackgroundContext";
 import "./styles.sass";
-import BackCard from "@/common/components/BackCard";
-import Project from "@/pages/Projects/components/Project";
-import MySpeedIcon from "@/common/images/apps/myspeed.png";
-import ARIcon from "@/common/images/apps/autoresponder.png";
-import SQLIcon from "@/common/images/apps/sqltoolkit.png";
-import MCIcon from "@/common/images/apps/mcdash.png";
-import LicenseIcon from "@/common/images/apps/licenseapi.png";
-import SheepstarIcon from "@/common/images/apps/sheepstar.png";
-import NextermIcon from "@/common/images/apps/nexterm.png";
-import SierraIcon from "@/common/images/apps/sierra.png";
-import DualbootIcon from "@/common/images/apps/dualbootmgr.png";
-import SpigotIcon from "@/common/images/apps/spigot.png";
-import Contributed from "@/pages/Projects/components/Contributed";
 
-const projects = [
+import DualbootManagerImage from "@/common/images/projects/DualbootManager.png";
+import LicenseAPIImage from "@/common/images/projects/LicenseAPI.png";
+import MCDashImage from "@/common/images/projects/MCDash.png";
+import MySpeedImage from "@/common/images/projects/MySpeed.png";
+import NextermImage from "@/common/images/projects/Nexterm.png";
+import QuizzleImage from "@/common/images/projects/Quizzle.png";
+import ProjectItem from "@/pages/Projects/components/ProjectItem";
+
+export const PROJECT_DATA = [
     {
         name: "Nexterm",
-        description: "Die kostenfreie Open-Source-Serververwaltungssoftware für SSH, VNC & RDP. ",
-        link: "https://nexterm.dev/",
-        icon: NextermIcon
+        logo: NextermImage,
+        link: "https://nexterm.dev",
+        description: "The open source server management software for SSH, VNC & RDP. Manage your servers with ease and security.",
+        technologies: ["Node.js", "React", "Guacamole"],
+        year: "2024",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/nexterm/1.png'),
+            () => import('@/pages/Projects/screenshots/nexterm/2.png'),
+            () => import('@/pages/Projects/screenshots/nexterm/3.png')
+        ]
     },
     {
         name: "MySpeed",
-        description: "MySpeed hilft dir, den Überblick über dein Internet zu behalten. Erstelle automatisierte Speedtests " +
-            "und lasse dir alle in einer Liste anzeigen.",
+        logo: MySpeedImage,
         link: "https://myspeed.dev/",
-        icon: MySpeedIcon
+        description: "An internet speed testing tool with historical tracking. Provides detailed metrics on download/upload speeds and latency with beautiful visualizations.",
+        technologies: ["Node.js", "React", "Chart.js", "Ookla", "Cloudflare Speed", "LibreSpeed"],
+        year: "2022",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/myspeed/1.png'),
+            () => import('@/pages/Projects/screenshots/myspeed/2.png'),
+            () => import('@/pages/Projects/screenshots/myspeed/3.png')
+        ]
     },
     {
         name: "LicenseAPI",
-        description: "Die perfekte Lösung, Projekte ohne großen Aufwand zu lizenzieren.",
-        link: "https://licenseapi.gnmyt.dev/",
-        icon: LicenseIcon
+        logo: LicenseAPIImage,
+        link: "https://licenseapi.gnm.dev/",
+        description: "A robust API for software license management. Handles license creation, validation, and activation with secure endpoints and comprehensive documentation.",
+        technologies: ["Node.js", "MongoDB", "TypeScript"],
+        year: "2024",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/licenseapi/1.png'),
+            () => import('@/pages/Projects/screenshots/licenseapi/2.png'),
+            () => import('@/pages/Projects/screenshots/licenseapi/3.png')
+        ]
     },
     {
         name: "MCDash",
-        description: "Eine kostenlose Verwaltungs-Software für Spigot & Bungeecord-Server. " +
-            "Die Software bietet ein umfangreiches Dashboard für das Verwalten von Plugins, Spielern und mehr.",
-        link: "https://mcdash.gnmyt.dev/",
-        icon: MCIcon
+        logo: MCDashImage,
+        link: "https://mcdash.gnm.dev",
+        description: "A comprehensive dashboard for Minecraft server management. Monitor performance, manage players, and control server settings through a modern web interface.",
+        technologies: ["React", "WebSockets", "Java API", "Minecraft APIs"],
+        year: "2021",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/mcdash/1.png'),
+            () => import('@/pages/Projects/screenshots/mcdash/2.png'),
+            () => import('@/pages/Projects/screenshots/mcdash/3.png')
+        ]
     },
     {
         name: "Dualboot Manager",
-        description: "Ermöglicht die Installation und Konfiguration des CLOVER-Bootloaders mit nur wenigen Klicks",
-        link: "https://dualboot.gnmyt.dev/",
-        icon: DualbootIcon
+        logo: DualbootManagerImage,
+        link: "https://dualboot.gnm.dev/",
+        description: "Make the installation and configuration of the CLOVER bootloader possible with just a few clicks.",
+        technologies: ["React", "Electron", "Node.js"],
+        year: "2024",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/dualboot/1.png'),
+            () => import('@/pages/Projects/screenshots/dualboot/2.png'),
+            () => import('@/pages/Projects/screenshots/dualboot/3.png')
+        ]
     },
     {
-        name: "AutoResponder-Integration",
-        description: "Eine Java-Wrapper-Bibliothek, mit der du deine eigene Logik in deinen Whatsapp-Bot implementieren kannst. " +
-            "Basiert auf der AutoResponder-App aus dem Play Store.",
-        link: "https://github.com/gnmyt/AutoResponder-Integration",
-        icon: ARIcon
-    },
-    {
-        name: "SQL Toolkit",
-        description: "Eine Java-Wrapper-Bibliothek, mit der du die Verwaltung von einer Datenbank vereinfachen kannst. " +
-            "Die Software generiert SQL-Statements, sodass du das nicht mehr musst.",
-        link: "https://github.com/gnmyt/sqltoolkit",
-        icon: SQLIcon
-    },
-    {
-        name: "Minecraft Plugins",
-        description: "Auf meinem Spigot-Profil findest du weitere Plugins, welche Ich erstellt habe. " +
-            "Dazu gehört beispielsweise RandSystem oder SimpleMaintenance.",
-        link: "https://www.spigotmc.org/resources/authors/gnmyt.589670/",
-        icon: SpigotIcon
+        name: "Quizzle",
+        logo: QuizzleImage,
+        link: "https://github.com/gnmyt/Quizzle",
+        description: "An interactive quiz platform for educational purposes. Create, share, and participate in quizzes with real-time scoring and leaderboards.",
+        technologies: ["Node.js", "React", "Socket.IO"],
+        year: "2024",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/quizzle/1.png'),
+            () => import('@/pages/Projects/screenshots/quizzle/2.png'),
+            () => import('@/pages/Projects/screenshots/quizzle/3.png')
+        ]
     }
-]
+];
 
-const contributed = [
-    {
-        name: "Sheepstar",
-        description: "Der modulare Discord Bot, der deinen Discord Server einzigartig macht.",
-        link: "https://sheepstar.xyz/",
-        icon: SheepstarIcon
-    },
-    {
-        name: "SierraDevoplers",
-        description: "Ein Team mit viel Kreativität. Leitet unter anderem Projekte wie den Störungsmelder oder MC-Leben",
-        link: "https://sierra-dev.de/",
-        icon: SierraIcon
-    }
-]
+export const Projects = () => {
+    const {setCircles} = useBackground();
 
-export const Projects = () => (
-    <div className="page-wrapper">
-        <BackCard currentPage="Projekte"/>
-        <div className="project-wrapper">
-            {projects.map(project => <Project {...project} key={project.name} />)}
+    useEffect(() => {
+        setCircles([
+            {bottom: '-10rem', right: '-20rem', size: '35rem', opacity: 0.3},
+            {top: '15rem', left: '-15rem', size: '25rem', opacity: 0.2}
+        ]);
+
+        return () => setCircles([]);
+    }, [setCircles]);
+
+    const containerVariants = {hidden: {opacity: 0}, visible: {opacity: 1, transition: {staggerChildren: 0.2}}};
+
+    return (
+        <div className="projects-page">
+            <motion.h1 className="page-title" initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}}
+                       transition={{duration: 0.5}}>
+                My Projects
+            </motion.h1>
+
+            <motion.p className="page-subtitle" initial={{opacity: 0}} animate={{opacity: 1}}
+                      transition={{duration: 0.5, delay: 0.2}}>
+                A selection of my recent projects and creations.
+            </motion.p>
+
+            <motion.div className="projects-list" variants={containerVariants} initial="hidden" animate="visible">
+                {PROJECT_DATA.map((project, index) => (<ProjectItem key={index} index={index} project={project}/>))}
+            </motion.div>
         </div>
-        <h3 className="project-page-text">Mitgewirkt bei</h3>
-        <div className="contributed-wrapper">
-            {contributed.map(contributed => <Contributed {...contributed} key={contributed.name} />)}
-        </div>
-    </div>
-)
+    );
+};

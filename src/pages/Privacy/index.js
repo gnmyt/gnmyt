@@ -1,1 +1,1 @@
-export {Privacy as default} from "./Privacy";
+export {Privacy as default} from "./Privacy.jsx";

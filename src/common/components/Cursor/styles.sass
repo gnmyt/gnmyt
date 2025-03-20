@@ -1,0 +1,28 @@
+@use "@/common/styles/colors" as *
+
+*
+  cursor: none !important
+
+a, button, [role="button"], [onclick]
+  pointer-events: auto !important
+
+.cursor
+  pointer-events: none
+  position: fixed
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  background: $primary
+  mix-blend-mode: difference
+  filter: blur(4px)
+  transform-origin: center
+  z-index: 9999
+  margin-left: -10px
+  margin-top: -10px
+  transition: width 0.2s, height 0.2s, margin-left 0.2s, margin-top 0.2s
+
+  &.hover
+    width: 40px
+    height: 40px
+    margin-left: -20px
+    margin-top: -20px

@@ -1,77 +1,63 @@
-@import "@/common/styles/colors"
+@use "@/common/styles/colors" as *
 
-.home-wrapper
-  height: 100vh
+.home-page
   display: flex
-  align-items: center
-  transition: ease-in-out 1s
+  justify-content: center
+  align-items: flex-start
+  height: 100%
+  overflow: hidden
+  position: relative
 
-.left-area
-  margin-left: 5rem
-  min-width: 13rem
-  transition: ease-in-out 1s
+  @media (max-width: 768px)
+    margin-top: 2rem
+    padding-top: 3rem
 
-.button-area
+.orbit-container
+  position: fixed
+  left: 0
+  right: 0
+  bottom: -40rem
   display: flex
-  gap: 0.8rem
+  justify-content: center
+  overflow: visible
+  z-index: 1
+  min-width: min(90rem, 100vw)
 
-.text-area
-  margin-bottom: 1rem
+  @media (max-width: 1024px)
+    bottom: -20rem
 
-.text-area *
-  color: $white
-  font-size: 58pt
-  font-weight: 900
-  margin: 0
-  transition: ease-in-out 1s
+  @media (max-width: 768px)
+    bottom: 10rem
 
-.text-area span
-  color: $primary
+  .orbit-ring
+    border: 2px solid $stroke
+    border-radius: 50%
+    position: relative
+    transform-origin: center
+    aspect-ratio: 1/1
+    min-width: 30rem
+    min-height: 30rem
 
-.legal-area
-  position: absolute
-  bottom: 0
-  right: 1rem
-  display: flex
-  gap: 1rem
+  .orbit-ring-outer
+    width: clamp(30rem, 60vw, 60rem)
+    height: clamp(30rem, 60vw, 60rem)
+    min-width: 30rem
+    min-height: 30rem
+    .planet
+      width: clamp(4rem, 6vw, 6rem)
+      height: clamp(4rem, 6vw, 6rem)
+      margin: -3rem
 
-  p
-    color: $white
-    font-size: 16pt
-    margin-top: 0.5rem
-    cursor: pointer
-
-    &:hover
-      color: $primary
-
-@media screen and (max-width: 1650px)
-  .text-area *
-    font-size: 48pt
-
-@media screen and (max-width: 1550px)
-  .left-area
-    margin-left: 3rem
-
-@media screen and (max-width: 1440px)
-  .text-area *
-    font-size: 38pt
-  .left-area
-    margin-left: 1rem
-
-@media screen and (max-width: 1050px)
-  .text-area *
-    font-size: 32pt
-  .left-area
-    margin-left: 1rem
-    margin-right: 1rem
+  .orbit-ring-inner
     display: flex
+    align-items: center
     justify-content: center
-    flex-direction: column
-  .home-wrapper
-    justify-content: center
+    width: clamp(45rem, 90vw, 90rem)
+    height: clamp(45rem, 90vw, 90rem)
+    min-width: 45rem
+    min-height: 45rem
 
-@media screen and (max-width: 450px)
-  .text-area *
-    font-size: 28pt
-  .left-area
-    min-width: auto
+    .planet
+      width: clamp(5rem, 7vw, 7rem)
+      height: clamp(5rem, 7vw, 7rem)
+      margin: -3.5rem

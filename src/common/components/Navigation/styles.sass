@@ -1,0 +1,159 @@
+@use "@/common/styles/colors" as *
+
+nav
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 2rem 8rem
+  user-select: none
+  position: relative
+  z-index: 100
+  backdrop-filter: blur(8px)
+  padding: 1rem 2rem
+  border-radius: 1rem
+  background: rgba(0, 0, 0, 0.05)
+
+  .title-area
+    display: flex
+    align-items: center
+    gap: 1rem
+    text-decoration: none
+
+    img
+      width: 3rem
+      height: 3rem
+      border-radius: 10rem
+      filter: brightness(1)
+      transition: filter 0.3s ease
+
+      &:hover
+        filter: brightness(1.2)
+
+    h1
+      margin: 0
+      color: $text
+      font-size: 2.5rem
+
+      span
+        color: $primary
+        font-weight: 500
+        display: inline-block
+
+  .mobile-menu-toggle
+    display: none
+    background: none
+    border: none
+    cursor: pointer
+    padding: 0.5rem
+    flex-direction: column
+    gap: 0.35rem
+    z-index: 101
+
+    .hamburger-line
+      width: 2rem
+      height: 0.2rem
+      background-color: $text
+      transition: transform 0.3s ease, opacity 0.3s ease
+      border-radius: 2px
+
+  .nav-area
+    display: flex
+    align-items: center
+    gap: 1.5rem
+    
+    a
+      text-transform: uppercase
+      color: $text
+      text-decoration: none
+      font-size: 1.5rem
+      position: relative
+      padding: 0.5rem 1rem
+      transition: color 0.3s ease
+
+      &::after
+        content: ''
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 2px
+        background-color: $primary
+        transform: scaleX(0)
+        transition: transform 0.3s ease
+
+      &:hover
+        color: $primary
+
+        &::after
+          transform: scaleX(1)
+
+    .nav-divider
+      width: 0.3rem
+      height: 0.3rem
+      border-radius: 100%
+      background-color: $text-light
+      opacity: 0.5
+
+@media (max-width: 1024px)
+  nav
+    margin: 1rem
+    padding: 1rem
+    background: rgba(0, 0, 0, 0.1)
+
+    .mobile-menu-toggle
+      display: flex
+
+    .nav-area
+      position: fixed
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      height: 100vh
+      width: 100vw
+      background-color: rgba(0, 0, 0, 0.95)
+      backdrop-filter: blur(10px)
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 2rem
+      padding: 2rem
+      overflow-y: auto
+      z-index: 100
+      visibility: hidden
+      opacity: 0
+      transform: translateX(100%)
+      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s
+
+      a
+        font-size: 2rem
+        opacity: 0
+        transform: translateY(1rem)
+        transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease
+
+        &:hover
+          transform: translateY(0) scale(1.1)
+
+      .nav-divider
+        display: none
+
+  nav.mobile-open
+    .nav-area
+      opacity: 1
+      visibility: visible
+      transform: translateX(0)
+      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s
+
+      a
+        opacity: 1
+        transform: translateY(0)
+        transition-delay: 0.2s
+
+    .mobile-menu-toggle
+      .hamburger-line
+        &:first-child
+          transform: translateY(0.55rem) rotate(45deg)
+        &:nth-child(2)
+          opacity: 0
+        &:last-child
+          transform: translateY(-0.55rem) rotate(-45deg)

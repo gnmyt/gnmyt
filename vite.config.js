@@ -1,12 +1,19 @@
-import react from '@vitejs/plugin-react';
 import path from "path";
+import {defineConfig} from "vite";
+import react from "@vitejs/plugin-react";
 
-export default {
+export default defineConfig({
     plugins: [react()],
-    build: {outDir: 'build'},
+    css: {
+        preprocessorOptions: {
+            sass: {
+                api: 'modern-compiler',
+            },
+        },
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
         },
     },
-}
+});

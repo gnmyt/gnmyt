@@ -1,27 +1,79 @@
-@import "@/common/styles/colors"
+@use "@/common/styles/colors" as *
 
-.project-wrapper
-  margin-left: 1rem
-  margin-right: 1rem
-  margin-top: 0.5rem
-  display: flex
-  flex-direction: column
-  gap: 1rem
-
-.contributed-wrapper
+.projects-page
+  margin: 0 auto 5rem
+  max-width: 1200px
+  padding: 0 2rem 5rem 2rem
   display: flex
   flex-direction: column
   align-items: center
 
-.project-page-text
-  color: $white
-  margin-top: 2rem
-  margin-bottom: 1rem
-  text-align: center
-  font-weight: 700
-  font-size: 24pt
+  .page-title
+    font-size: 3.8rem
+    color: $text
+    margin: 0
+    text-align: center
+    position: relative
+    font-weight: 700
 
-@media screen and (max-width: 512px)
-  .project-wrapper
-    margin-left: 0
-    margin-right: 0
+    background: linear-gradient(120deg, $text 0%, $primary 70%, darken($primary, 10%) 100%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+
+  .page-subtitle
+    font-size: 1.3rem
+    color: $text-light
+    margin-bottom: 3.5rem
+    text-align: center
+    max-width: 650px
+    opacity: 0.8
+    line-height: 1.5
+
+  .projects-list
+    width: 100%
+    display: flex
+    flex-direction: column
+    gap: 3.5rem
+
+@keyframes pulse
+  0%
+    transform: translate(-50%, -50%) scale(0.5)
+    opacity: 0.8
+
+  50%
+    opacity: 0.5
+
+  100%
+    transform: translate(-50%, -50%) scale(1.5)
+    opacity: 0
+
+@media (max-width: 992px)
+  .projects-page
+    .page-title
+      font-size: 3.2rem
+
+    .project-screenshots
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr))
+
+@media (max-width: 768px)
+  .projects-page
+    .page-title
+      font-size: 2.8rem
+
+    .project-screenshots
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+
+@media (max-width: 576px)
+  .projects-page
+    margin: 2rem auto
+
+    .page-title
+      font-size: 2.3rem
+
+    .page-subtitle
+      font-size: 1.1rem
+      margin-bottom: 2.5rem
+
+    .project-screenshots
+      grid-template-columns: 1fr

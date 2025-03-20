@@ -1,0 +1,32 @@
+@use "@/common/styles/colors" as *
+
+.planet
+  position: absolute
+  background-color: $background
+  border-radius: 50%
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  border: 2px solid $stroke
+  cursor: pointer
+  padding: 0
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  aspect-ratio: 1/1
+  transition: transform 0.2s ease
+
+  &:hover
+    transform: translate(-50%, -50%) scale(1.1)
+
+  img
+    width: calc(100% - 2rem)
+    height: calc(100% - 2rem)
+    object-fit: cover
+    pointer-events: none
+
+  @media (max-width: 768px)
+    img
+      width: calc(100% - 1.5rem)
+      height: calc(100% - 1.5rem)

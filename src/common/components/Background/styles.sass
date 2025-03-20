@@ -1,0 +1,21 @@
+@use "@/common/styles/colors" as *
+
+.background
+  position: fixed
+  display: flex
+  align-items: center
+  justify-content: center
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: -1
+  overflow: hidden
+
+.background-circle
+  position: absolute
+  border-radius: 50%
+  background: $primary
+  filter: blur(70px)
+  opacity: 0.15
+  transition: opacity 1s ease-in-out

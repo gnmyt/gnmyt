@@ -1,24 +1,24 @@
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+
 import "@/common/styles/main.sass";
-import "@/common/styles/_fonts.sass";
-import Home from "@/pages/Home";
-import Contact from "@/pages/Contact";
-import Projects from "@/pages/Projects";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Privacy from "@/pages/Privacy";
-import Imprint from "@/pages/Imprint";
+import Navigation from "@/common/components/Navigation";
+import Footer from "@/common/components/Footer";
+import Background from "@/common/components/Background";
+import Cursor from "@/common/components/Cursor";
+import {BackgroundProvider} from "@/common/components/Background/BackgroundContext";
+import {Outlet} from "react-router";
 
-export const App = () => (
-    <>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/imprint" element={<Imprint />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
-        </BrowserRouter>
-    </>
+export default () => (
+    <BackgroundProvider>
+        <Cursor/>
+        <Background/>
+        <Navigation/>
+        <div className="app-container">
+            <Outlet/>
+        </div>
+        <Footer/>
+    </BackgroundProvider>
 );
-
-export default App;

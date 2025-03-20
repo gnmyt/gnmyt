@@ -1,0 +1,1 @@
+export {ScreenshotDialog as default} from "./ScreenshotDialog.jsx";
