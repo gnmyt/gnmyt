@@ -16,7 +16,9 @@ export default () => (
         <Cursor/>
         <Background/>
         <Navigation/>
-        <Outlet/>
+        <div className="app-container">
+            <Outlet/>
+        </div>
         <Footer/>
     </BackgroundProvider>
 );
