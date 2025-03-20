@@ -5,6 +5,18 @@
   width: 40rem
   text-align: center
   line-height: 1.2
+  position: relative
+  z-index: 2
+  background: rgba($background, 0.85)
+  padding: 2rem
+  border-radius: 1rem
+  backdrop-filter: blur(8px)
+
+  @media (max-width: 768px)
+    font-size: 2.2rem
+    width: 90%
+    max-width: 30rem
+    padding: 1.5rem
 
   span
     color: $primary
