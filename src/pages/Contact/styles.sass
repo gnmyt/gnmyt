@@ -1,0 +1,94 @@
+@use "@/common/styles/colors" as *
+
+.contact-page
+  height: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 0 8rem
+
+  .info-area
+    width: 30rem
+
+  h1
+    font-size: 2.5rem
+    color: $text
+
+  h2
+    font-size: 1.5rem
+    font-weight: 500
+    color: $text-light
+
+
+.social-platforms
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 2rem
+  .social-platform
+    display: flex
+    flex-direction: column
+    align-items: start
+    gap: 1rem
+    padding: 2rem
+    text-decoration: none
+    color: $text
+    border: 1px solid $stroke
+    border-radius: 1.25rem
+
+    .platform-icon
+      font-size: 1.25rem
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 1rem
+      border: 1px solid $stroke
+      border-radius: 1.25rem
+
+    .platform-info
+      display: flex
+      flex-direction: column
+
+      h1
+        font-size: 1.5rem
+        margin: 0.5rem 0
+        color: $text
+      p
+        font-size: 1rem
+        margin: 0
+        color: $text-light
+
+.contact-area
+  display: flex
+  flex-direction: column
+  gap: 2rem
+  width: 44rem
+
+  .donation-area
+    display: flex
+    align-items: center
+    border: 1px solid $stroke
+    border-radius: 1.25rem
+    padding: 1rem 2rem
+    gap: 2rem
+    text-decoration: none
+
+    h1
+      font-size: 1.5rem
+      margin: 0.5rem 0
+      color: $text
+
+    p
+      margin: 0
+      font-size: 1rem
+      color: $text-light
+
+
+    .icon-area
+      font-size: 1.25rem
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 1rem
+      color: $primary
+      border: 1px solid $stroke
+      border-radius: 1.25rem
