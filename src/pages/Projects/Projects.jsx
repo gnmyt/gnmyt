@@ -85,9 +85,9 @@ export const PROJECT_DATA = [
         technologies: ["Node.js", "React", "Socket.IO"],
         year: "2024",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/quizzle/1.png'),
+            () => import('@/pages/Projects/screenshots/quizzle/2.png'),
+            () => import('@/pages/Projects/screenshots/quizzle/3.png')
         ]
     }
 ];
