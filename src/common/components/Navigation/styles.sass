@@ -5,6 +5,8 @@ nav
   justify-content: space-between
   margin: 2rem 8rem
   user-select: none
+  position: relative
+  z-index: 100
 
   .title-area
     display: flex
@@ -26,6 +28,22 @@ nav
       color: $primary
       font-weight: 500
 
+  .mobile-menu-toggle
+    display: none
+    background: none
+    border: none
+    cursor: pointer
+    padding: 0.5rem
+    flex-direction: column
+    gap: 0.35rem
+    z-index: 101
+
+    .hamburger-line
+      width: 2rem
+      height: 0.2rem
+      background-color: $text
+      transition: transform 0.3s ease
+
   .nav-area
     display: flex
     align-items: center
@@ -37,9 +55,56 @@ nav
       text-decoration: none
       font-size: 1.5rem
 
-
     .nav-divider
       width: 0.3rem
       height: 0.3rem
       border-radius: 100%
       background-color: $text-light
+
+@media (max-width: 768px)
+  nav
+    margin: 2rem
+    
+    .mobile-menu-toggle
+      display: flex
+
+    .nav-area
+      position: fixed
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-color: rgba(0, 0, 0, 0.95)
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 2rem
+      transform: translateX(100%)
+      transition: transform 0.3s ease
+      
+      a
+        font-size: 2rem
+        opacity: 0
+        transform: translateY(1rem)
+        transition: opacity 0.3s ease, transform 0.3s ease
+
+      .nav-divider
+        display: none
+
+  nav.mobile-open
+    .nav-area
+      transform: translateX(0)
+      
+      a
+        opacity: 1
+        transform: translateY(0)
+        transition-delay: 0.2s
+
+    .mobile-menu-toggle
+      .hamburger-line
+        &:first-child
+          transform: translateY(0.55rem) rotate(45deg)
+        &:nth-child(2)
+          opacity: 0
+        &:last-child
+          transform: translateY(-0.55rem) rotate(-45deg)
