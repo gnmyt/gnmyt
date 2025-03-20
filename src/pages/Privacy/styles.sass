@@ -7,12 +7,21 @@
   padding: 4rem 8rem
   min-height: 100vh
 
+  @media (max-width: 1024px)
+    grid-template-columns: 1fr
+    padding: 2rem
+    gap: 3rem
+
   .privacy-info
     max-width: 50rem
     width: 100%
 
+    @media (max-width: 1024px)
+      max-width: 100%
+
     .content
       margin-bottom: 5rem
+
       h1, h3, h4
         margin-top: 3rem
         margin-bottom: 1.5rem
@@ -33,21 +42,29 @@
 
       h1
         font-size: 3.5rem
+        @media (max-width: 1024px)
+          font-size: 2.8rem
 
       h1, h2
         font-size: 2.2rem
         font-weight: 600
         color: $primary
+        @media (max-width: 1024px)
+          font-size: 2rem
 
       h3
         font-size: 1.8rem
         color: $text
         margin-top: 2.5rem
+        @media (max-width: 1024px)
+          font-size: 1.6rem
 
       h4
         font-size: 1.5rem
         color: $text-light
         margin-top: 2rem
+        @media (max-width: 1024px)
+          font-size: 1.4rem
 
       p
         color: $text-light
@@ -57,6 +74,8 @@
         line-height: 1.7
         letter-spacing: 0.02em
         opacity: 0.9
+        @media (max-width: 1024px)
+          font-size: 1.4rem
 
       .legal-notice
         font-size: 1.2rem
@@ -67,6 +86,8 @@
         li
           color: $text-light
           font-size: 1.5rem
+          @media (max-width: 1024px)
+            font-size: 1.4rem
 
       a
         color: $primary
@@ -78,6 +99,9 @@
 
   .illustration-container
     position: relative
+
+    @media (max-width: 1024px)
+      display: none
 
     img
       position: fixed

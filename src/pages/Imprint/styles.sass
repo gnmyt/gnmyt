@@ -8,14 +8,28 @@
   align-items: center
   padding: 0 8rem
 
+  @media (max-width: 1024px)
+    flex-direction: column-reverse
+    padding: 0 2rem
+    gap: 3rem
+    margin-bottom: 5rem
+
   .imprint-info
     width: 22rem
+
+    @media (max-width: 1024px)
+      width: 100%
+      max-width: 100%
 
     h1
       font-size: 2.8rem
       margin-bottom: 3rem
       color: $primary
       position: relative
+
+      @media (max-width: 1024px)
+        font-size: 2.4rem
+        margin-bottom: 2.5rem
 
       &::after
         content: ""
@@ -41,11 +55,18 @@
         line-height: 1.6
         letter-spacing: 0.02em
 
+        @media (max-width: 1024px)
+          font-size: 1.6rem
+
     .legal-notice
       font-size: 1.2rem
 
   img
     width: 30rem
+
+    @media (max-width: 1024px)
+      width: 100%
+      max-width: 25rem
 
 @keyframes slideIn
   to
