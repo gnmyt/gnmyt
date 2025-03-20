@@ -1,10 +1,11 @@
 import "./styles.sass";
 
-export const Planet = ({id, x, y, onClick}) => {
+export const Planet = ({x, y, onClick, image, name}) => {
     return (
-        <div key={id} className="planet" onClick={() => onClick(id)}
-             style={{transform: `translate(${x}px, ${y}px)`}}>
-            <img src="https://place-hold.it/500x500.png" alt="Planet Logo"/>
+        <div key={name} className="planet" onClick={() => onClick(name)}
+             style={{transform: `translate(${x}px, ${y}px)`}}
+             title={name}>
+            <img src={image} alt={`${name} Logo`}/>
         </div>
     )
 }
