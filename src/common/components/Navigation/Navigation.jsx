@@ -35,7 +35,7 @@ export const Navigation = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className={mobileMenuOpen ? "mobile-open" : ""}>
-            <Link className="title-area" to="/" onClick={(e) => e.preventDefault()}>
+            <Link className="title-area" to="/">
                 <motion.img 
                     whileHover={{ scale: 1.1 }}
                     animate={isRotating ? { rotate: 360 } : { rotate: 0 }}
