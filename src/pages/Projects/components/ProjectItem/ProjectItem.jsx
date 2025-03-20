@@ -1,11 +1,34 @@
 import "./styles.sass";
 
 import {motion} from "framer-motion";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {PROJECT_DATA} from "@/pages/Projects/Projects.jsx";
 
 export const ProjectItem = ({project, index}) => {
-    const [loadingScreenshots, setLoadingScreenshots] = useState(new Array(project.screenshots.length).fill(true));
+    const [loadingScreenshots, setLoadingScreenshots] = useState(project.screenshots ? 
+        new Array(project.screenshots.length).fill(true) : []);
+    const [loadedImages, setLoadedImages] = useState([]);
+
+    useEffect(() => {
+        const loadProjectImages = async () => {
+            try {
+                let images = [];
+
+                if (project.screenshots && project.screenshots.length > 0) {
+                    const imagePromises = project.screenshots.map(importFunc => importFunc());
+                    const importedImages = await Promise.all(imagePromises);
+                    images = importedImages.map(module => module.default);
+                }
+                
+                setLoadedImages(images);
+            } catch (error) {
+                console.error(`Error loading images for ${project.name}:`, error);
+                setLoadedImages([]);
+            }
+        };
+
+        loadProjectImages();
+    }, [project.name, project.screenshots]);
 
     const itemVariants = {
         hidden: {y: 50, opacity: 0},
@@ -64,28 +87,40 @@ export const ProjectItem = ({project, index}) => {
             </div>
 
             <div className="project-screenshots">
-                {project.screenshots.map((screenshot, idx) => (
-                    <motion.div className="screenshot-container" key={idx} initial={{opacity: 0, y: 20}}
-                                animate={{opacity: 1, y: 0}} transition={{delay: 0.3 + (idx * 0.1)}}>
-                        {loadingScreenshots[idx] && (
+                {loadedImages.length > 0 ? 
+                    loadedImages.map((screenshot, idx) => (
+                        <motion.div className="screenshot-container" key={idx} initial={{opacity: 0, y: 20}}
+                                    animate={{opacity: 1, y: 0}} transition={{delay: 0.3 + (idx * 0.1)}}>
+                            {loadingScreenshots[idx] && (
+                                <motion.div className="screenshot-loading" variants={loadingVariants}
+                                            animate="animate">
+                                    <div className="loading-pulse"></div>
+                                </motion.div>
+                            )}
+
+                            <img
+                                src={screenshot}
+                                alt={`${project.name} screenshot ${idx + 1}`}
+                                className="screenshot-image"
+                                style={{
+                                    opacity: loadingScreenshots[idx] ? 0 : 1
+                                }}
+                                onLoad={() => handleImageLoad(idx)}
+                                onError={() => handleImageError(idx)}
+                            />
+                        </motion.div>
+                    ))
+                : project.screenshots && project.screenshots.length > 0 ?
+                    new Array(project.screenshots.length).fill(0).map((_, idx) => (
+                        <motion.div className="screenshot-container" key={idx} initial={{opacity: 0, y: 20}}
+                                    animate={{opacity: 1, y: 0}} transition={{delay: 0.3 + (idx * 0.1)}}>
                             <motion.div className="screenshot-loading" variants={loadingVariants}
                                         animate="animate">
                                 <div className="loading-pulse"></div>
                             </motion.div>
-                        )}
-
-                        <img
-                            src={screenshot}
-                            alt={`${project.name} screenshot ${idx + 1}`}
-                            className="screenshot-image"
-                            style={{
-                                opacity: loadingScreenshots[idx] ? 0 : 1
-                            }}
-                            onLoad={() => handleImageLoad(idx)}
-                            onError={() => handleImageError(idx)}
-                        />
-                    </motion.div>
-                ))}
+                        </motion.div>
+                    ))
+                : null}
             </div>
 
             {index < PROJECT_DATA.length - 1 && <div className="project-divider"/>}
