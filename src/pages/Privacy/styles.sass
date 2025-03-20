@@ -1,0 +1,89 @@
+@use "@/common/styles/colors" as *
+
+.privacy-page
+  display: grid
+  grid-template-columns: minmax(0, 1fr) auto
+  gap: 2rem
+  padding: 4rem 8rem
+  min-height: 100vh
+
+  .privacy-info
+    max-width: 50rem
+    width: 100%
+
+    .content
+      margin-bottom: 5rem
+      h1, h3, h4
+        margin-top: 3rem
+        margin-bottom: 1.5rem
+        position: relative
+
+        &::after
+          content: ""
+          left: 0
+          position: absolute
+          bottom: -0.5rem
+          width: 3rem
+          height: 2px
+          background: $primary
+          transform: scaleX(0)
+          transform-origin: left
+          animation: slideIn 0.5s ease forwards
+          opacity: 0.7
+
+      h1
+        font-size: 3.5rem
+
+      h1, h2
+        font-size: 2.2rem
+        font-weight: 600
+        color: $primary
+
+      h3
+        font-size: 1.8rem
+        color: $text
+        margin-top: 2.5rem
+
+      h4
+        font-size: 1.5rem
+        color: $text-light
+        margin-top: 2rem
+
+      p
+        color: $text-light
+        font-size: 1.5rem
+        font-weight: 500
+        margin: 0 0 1.5rem 0
+        line-height: 1.7
+        letter-spacing: 0.02em
+        opacity: 0.9
+
+      .legal-notice
+        font-size: 1.2rem
+
+      ul
+        margin: 1.5rem 0 2rem 2rem
+
+        li
+          color: $text-light
+          font-size: 1.5rem
+
+      a
+        color: $primary
+        text-decoration: none
+        transition: opacity 0.2s ease
+
+        &:hover
+          opacity: 0.8
+
+  .illustration-container
+    position: relative
+
+    img
+      position: fixed
+      width: 30rem
+      right: 8rem
+
+@keyframes slideIn
+  to
+    transform: scaleX(1)
