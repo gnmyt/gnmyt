@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import "./styles.sass";
 import Planet from "@/pages/Home/components/Planet";
 import {motion} from "framer-motion";
+import Title from "@/pages/Home/components/Title";
 
 const createPlanets = (count, prefix, speed) => Array.from({length: count}, (_, i) => ({
     id: `${prefix}-${i}`, speed, offset: i * 5, x: 0, y: 0,
@@ -64,13 +65,7 @@ export const Home = () => {
 
     return (
         <motion.div className="home-page">
-            <motion.h1
-                initial={{opacity: 0, y: "5rem"}}
-                animate={{opacity: 1, y: 0}}
-                exit={{opacity: 0, y: "-5rem"}}
-                transition={{duration: 0.8, ease: "easeInOut"}}>
-                A <span>Full-Stack</span> Software Developer from Germany
-            </motion.h1>
+            <Title />
 
             <motion.div
                 className="orbit-container"
