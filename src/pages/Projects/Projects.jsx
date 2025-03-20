@@ -46,9 +46,9 @@ export const PROJECT_DATA = [
         technologies: ["Node.js", "MongoDB", "TypeScript"],
         year: "2024",
         screenshots: [
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png",
-            "https://place-hold.it/1920x1080.png"
+            () => import('@/pages/Projects/screenshots/licenseapi/1.png'),
+            () => import('@/pages/Projects/screenshots/licenseapi/2.png'),
+            () => import('@/pages/Projects/screenshots/licenseapi/3.png')
         ]
     },
     {
