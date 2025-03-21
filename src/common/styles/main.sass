@@ -1,5 +1,12 @@
 @use "colors" as *
 
+*
+  box-sizing: border-box
+
+html
+  overflow-x: hidden
+  width: 100%
+
 body
   font-family: 'Poppins', sans-serif
   background-color: $background
@@ -8,6 +15,8 @@ body
   margin: 0
   display: flex
   flex-direction: column
+  width: 100%
+  overflow-x: hidden
 
 a
   user-select: none
@@ -17,12 +26,14 @@ a
   height: 100%
   display: flex
   flex-direction: column
+  width: 100%
 
 .app-container
   flex: 1
   display: flex
   flex-direction: column
   min-height: 0
+  width: 100%
 
 ::selection
   background: rgba($primary, 0.3)

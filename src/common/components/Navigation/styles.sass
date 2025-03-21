@@ -4,7 +4,7 @@ nav
   display: flex
   justify-content: space-between
   align-items: center
-  margin: 2rem 8rem
+  margin: 2rem
   user-select: none
   position: relative
   z-index: 100
@@ -12,6 +12,11 @@ nav
   padding: 1rem 2rem
   border-radius: 1rem
   background: rgba(0, 0, 0, 0.05)
+  box-sizing: border-box
+  max-width: 100%
+  
+  @media (min-width: 1025px)
+    margin: 2rem 8rem
 
   .title-area
     display: flex
@@ -38,6 +43,9 @@ nav
         color: $primary
         font-weight: 500
         display: inline-block
+
+      @media (max-width: 480px)
+        font-size: 2rem
 
   .mobile-menu-toggle
     display: none
@@ -110,7 +118,7 @@ nav
       right: 0
       bottom: 0
       height: 100vh
-      width: 100vw
+      width: 100%
       background-color: rgba(0, 0, 0, 0.95)
       backdrop-filter: blur(10px)
       flex-direction: column
