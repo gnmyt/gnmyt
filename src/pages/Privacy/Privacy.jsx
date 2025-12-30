@@ -52,10 +52,22 @@ export const Privacy = () => {
                         whileInView="visible"
                         viewport={{once: true, amount: 0.3}}
                         variants={sectionVariants}>
+                        <h2>Geltungsbereich</h2>
+                        <p>Diese Datenschutzerkl&auml;rung gilt f&uuml;r alle Websites, Dienste und mobilen Apps, 
+                            die von <strong>GermanNewsMaker</strong> (Mathias Wagner) entwickelt und bereitgestellt werden. 
+                            Dies umfasst unter anderem die Website gnm.dev sowie alle im Google Play Store und Apple App Store 
+                            ver&ouml;ffentlichten Apps des Entwicklers <a href="https://play.google.com/store/apps/dev?id=7943448255540084504" target="_blank" rel="noopener noreferrer">GermanNewsMaker</a>.</p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once: true, amount: 0.3}}
+                        variants={sectionVariants}>
                         <h2>1. Datenschutz auf einen Blick</h2>
                         <h3>Allgemeine Hinweise</h3>
                         <p>Die folgenden Hinweise geben einen einfachen &Uuml;berblick dar&uuml;ber, was mit Ihren
-                            personenbezogenen Daten passiert, wenn Sie diese Website besuchen...</p>
+                            personenbezogenen Daten passiert, wenn Sie unsere Websites besuchen oder unsere Apps nutzen.</p>
                     </motion.div>
 
                     <motion.div
@@ -118,8 +130,9 @@ export const Privacy = () => {
                         viewport={{once: true, amount: 0.3}}
                         variants={sectionVariants}>
                         <h3>Hinweis zur verantwortlichen Stelle</h3>
-                        <p>Die verantwortliche Stelle f&uuml;r die Datenverarbeitung auf dieser Website ist:</p>
-                        <p>Mathias Wagner<br/>
+                        <p>Die verantwortliche Stelle f&uuml;r die Datenverarbeitung auf unseren Websites und in unseren Apps ist:</p>
+                        <p><strong>GermanNewsMaker</strong><br/>
+                            Mathias Wagner<br/>
                             c/o COCENTER<br/>
                             Koppoldstr. 1<br/>
                             86551 Aichach</p>
@@ -299,7 +312,70 @@ export const Privacy = () => {
                             Ihrer Browserzeile.</p>
                         <p>Wenn die SSL- bzw. TLS-Verschl&uuml;sselung aktiviert ist, k&ouml;nnen die Daten, die Sie an
                             uns &uuml;bermitteln, nicht von Dritten mitgelesen werden.</p>
-                        <p>Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a></p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once: true, amount: 0.3}}
+                        variants={sectionVariants}>
+                        <h2>3. Datenschutz in unseren mobilen Apps</h2>
+                        <p>Dieser Abschnitt erl&auml;utert, welche Daten bei der Nutzung der mobilen Apps 
+                            von <strong>GermanNewsMaker</strong> erhoben, gespeichert und verarbeitet werden.</p>
+
+                        <h3>Welche Daten werden erhoben?</h3>
+                        <p>Unsere Apps k&ouml;nnen je nach Funktionalit&auml;t folgende Daten erheben und verarbeiten:</p>
+                        <ul>
+                            <li><strong>Verbindungsdaten:</strong> Server-Adressen, Ports und Konfigurationsdaten 
+                                f&uuml;r Netzwerkverbindungen</li>
+                            <li><strong>Authentifizierungsdaten:</strong> Benutzernamen, Session-Tokens und Login-Status 
+                                (Passw&ouml;rter werden lokal gespeichert und nicht an uns &uuml;bertragen)</li>
+                            <li><strong>Sitzungsdaten:</strong> Session-Tokens und Login-Status zur Aufrechterhaltung 
+                                von Verbindungen</li>
+                            <li><strong>Lokale Einstellungen:</strong> App-Pr&auml;ferenzen und Konfigurationen</li>
+                        </ul>
+
+                        <h3>Wo werden die Daten gespeichert?</h3>
+                        <ul>
+                            <li><strong>Lokal auf Ihrem Ger&auml;t:</strong> Konfigurationen, Session-Tokens 
+                                und Anmeldedaten werden lokal auf Ihrem Ger&auml;t gespeichert</li>
+                            <li><strong>Auf Ihren eigenen Servern:</strong> Bei Apps, die sich mit selbst gehosteten 
+                                Servern verbinden, werden alle serverseitigen Daten auf Ihrer eigenen Infrastruktur 
+                                gespeichert &ndash; nicht auf unseren Servern</li>
+                        </ul>
+
+                        <h3>Daten&uuml;bertragung</h3>
+                        <p>Die Kommunikation zwischen unseren Apps und Servern erfolgt verschl&uuml;sselt &uuml;ber 
+                            HTTPS/TLS. Wir empfehlen, nur verschl&uuml;sselte Verbindungen zu verwenden.</p>
+
+                        <h3>Drittanbieter-Dienste</h3>
+                        <p>Unsere Apps &uuml;bertragen grunds&auml;tzlich keine personenbezogenen Daten an Dritte oder an uns 
+                            als Entwickler, sofern nicht anders in der jeweiligen App angegeben. Alle Daten verbleiben 
+                            zwischen Ihrem Ger&auml;t und Ihren eigenen Servern.</p>
+
+                        <h3>Ihre Rechte bez&uuml;glich der App-Daten</h3>
+                        <ul>
+                            <li><strong>L&ouml;schung:</strong> Sie k&ouml;nnen alle lokal gespeicherten Daten jederzeit 
+                                durch Deinstallation der App oder L&ouml;schen der App-Daten in den Ger&auml;teeinstellungen entfernen</li>
+                            <li><strong>Auskunft:</strong> Da alle Daten lokal oder auf Ihren eigenen Servern gespeichert 
+                                werden, haben Sie jederzeit vollen Zugriff auf Ihre Daten</li>
+                            <li><strong>Kontrolle:</strong> Sie behalten die vollst&auml;ndige Kontrolle &uuml;ber Ihre 
+                                Daten</li>
+                        </ul>
+
+                        <h3>Kontakt f&uuml;r Datenschutzfragen</h3>
+                        <p>Bei Fragen zum Datenschutz in unseren Apps wenden Sie sich bitte an:</p>
+                        <p><strong>GermanNewsMaker</strong><br/>
+                            Mathias Wagner<br/>
+                            E-Mail: mathias@gnm.dev</p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once: true, amount: 0.3}}
+                        variants={sectionVariants}>
+                        <p>Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a> (angepasst und erg&auml;nzt)</p>
                     </motion.div>
                 </motion.div>
             </motion.div>
