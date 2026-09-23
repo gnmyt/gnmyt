@@ -1,52 +1,25 @@
 import "./styles.sass";
-import {AnimatePresence, motion} from "framer-motion";
-import {useEffect, useState} from "react";
+import {motion} from "framer-motion";
 
-export const Title = () => {
-    const [currentWordIndex, setCurrentWordIndex] = useState(0);
-    const words = ["Full-Stack", "Java", "React", "JavaScript", "TypeScript"];
+const BIRTHDAY = {year: 2006, month: 4, day: 19};
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentWordIndex(prevIndex => (prevIndex + 1) % words.length);
-        }, 2000);
+const age = () => {
+    const now = new Date();
+    const hadBirthday = now.getMonth() + 1 > BIRTHDAY.month || (now.getMonth() + 1 === BIRTHDAY.month && now.getDate() >= BIRTHDAY.day);
+    return now.getFullYear() - BIRTHDAY.year - (hadBirthday ? 0 : 1);
+};
 
-        return () => clearInterval(interval);
-    }, [words.length]);
-
-    return (
-        <motion.h1
-            className="title-text"
-            initial={{opacity: 0, y: "5rem"}}
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0, y: "-5rem"}}
-            transition={{duration: 0.8, ease: "easeInOut"}}>
-            A <span className="word-animation-container">
-                    <AnimatePresence mode="wait">
-                        <motion.span
-                            key={words[currentWordIndex]}
-                            initial={{y: -20, opacity: 0}}
-                            animate={{
-                                y: 0, opacity: 1,
-                                transition: {
-                                    y: {duration: 0.5, ease: "easeOut"},
-                                    opacity: {duration: 0.3, ease: "easeOut"}
-                                }
-                            }}
-                            exit={{
-                                y: 20,
-                                opacity: 0,
-                                transition: {
-                                    y: {duration: 0.5, ease: "easeIn"},
-                                    opacity: {duration: 0.3, ease: "easeIn"}
-                                }
-                            }}
-                            className="animated-word"
-                        >
-                            {words[currentWordIndex]}
-                        </motion.span>
-                    </AnimatePresence>
-                </span> Software Developer from Germany
-        </motion.h1>
-    )
-}
+export const Title = () => (
+    <motion.div
+        className="title-block"
+        initial={{opacity: 0, y: "1.5rem"}}
+        animate={{opacity: 1, y: 0}}
+        exit={{opacity: 0, y: "-1.5rem"}}
+        transition={{duration: 0.8, ease: "easeInOut"}}>
+        <h1 className="title-text">I build the tools<br/>I'd want to <span>self-host.</span></h1>
+        <p className="title-lead">
+            I'm Mathias, a {age()}-year-old developer from Germany. Most of my work is open source:
+            Nexterm, tunlit and a few more, all made to run on your own server. Say hello anytime!
+        </p>
+    </motion.div>
+);

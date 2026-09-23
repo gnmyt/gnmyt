@@ -1,5 +1,12 @@
 @use "colors" as *
 
+@font-face
+  font-family: "Bricolage Grotesque"
+  font-style: normal
+  font-weight: 400 700
+  font-display: swap
+  src: url("/fonts/bricolage-grotesque.woff2") format("woff2")
+
 *
   box-sizing: border-box
 
@@ -8,7 +15,7 @@ html
   width: 100%
 
 body
-  font-family: 'Poppins', sans-serif
+  font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif
   background-color: $background
   color: $text
   height: 100vh

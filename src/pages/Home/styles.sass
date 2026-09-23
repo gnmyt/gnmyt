@@ -2,15 +2,11 @@
 
 .home-page
   display: flex
-  justify-content: center
+  justify-content: flex-start
   align-items: flex-start
   height: 100%
   overflow: hidden
   position: relative
-
-  @media (max-width: 768px)
-    margin-top: 2rem
-    padding-top: 3rem
 
 .orbit-container
   position: fixed
@@ -22,6 +18,9 @@
   overflow: visible
   z-index: 1
   min-width: min(90rem, 100vw)
+
+  @media (min-width: 1025px)
+    translate: 24vw 0
 
   @media (max-width: 1024px)
     bottom: -20rem
@@ -39,8 +38,8 @@
     min-height: 30rem
 
   .orbit-ring-outer
-    width: clamp(30rem, 60vw, 60rem)
-    height: clamp(30rem, 60vw, 60rem)
+    width: clamp(30rem, 68vw, 68rem)
+    height: clamp(30rem, 68vw, 68rem)
     min-width: 30rem
     min-height: 30rem
     .planet
@@ -51,8 +50,8 @@
     display: flex
     align-items: center
     justify-content: center
-    width: clamp(45rem, 90vw, 90rem)
-    height: clamp(45rem, 90vw, 90rem)
+    width: clamp(45rem, 102vw, 102rem)
+    height: clamp(45rem, 102vw, 102rem)
     min-width: 45rem
     min-height: 45rem
 
