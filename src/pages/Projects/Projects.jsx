@@ -9,9 +9,23 @@ import MCDashImage from "@/common/images/projects/MCDash.png";
 import MySpeedImage from "@/common/images/projects/MySpeed.png";
 import NextermImage from "@/common/images/projects/Nexterm.png";
 import QuizzleImage from "@/common/images/projects/Quizzle.png";
+import TunlitImage from "@/common/images/projects/Tunlit.png";
 import ProjectItem from "@/pages/Projects/components/ProjectItem";
 
 export const PROJECT_DATA = [
+    {
+        name: "tunlit",
+        logo: TunlitImage,
+        link: "https://tunlit.dev",
+        description: "A self-hosted alternative to ngrok. Expose a local port through your own server - HTTP, WebSockets, TCP and UDP, all behind one public port.",
+        technologies: ["Node.js", "React", "Rust"],
+        year: "2026",
+        screenshots: [
+            () => import('@/pages/Projects/screenshots/tunlit/1.png'),
+            () => import('@/pages/Projects/screenshots/tunlit/2.png'),
+            () => import('@/pages/Projects/screenshots/tunlit/3.png')
+        ]
+    },
     {
         name: "Nexterm",
         logo: NextermImage,

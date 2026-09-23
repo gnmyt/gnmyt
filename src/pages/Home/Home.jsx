@@ -58,7 +58,7 @@ export const Home = () => {
     useEffect(() => {
         const baseSpeed = isMobile ? 0.03 : 0.04;
         setOuterPlanets(createPlanets(2, 'outer', baseSpeed, 0));
-        setInnerPlanets(createPlanets(4, 'inner', baseSpeed * 1.5, 2));
+        setInnerPlanets(createPlanets(5, 'inner', baseSpeed * 1.5, 2));
 
         setCircles([{bottom: '-20rem', size: '35rem'}]);
 
