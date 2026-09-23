@@ -8,10 +8,7 @@ nav
   user-select: none
   position: relative
   z-index: 100
-  backdrop-filter: blur(8px)
-  padding: 1rem 2rem
-  border-radius: 1rem
-  background: rgba(0, 0, 0, 0.05)
+  padding: 1rem 0
   box-sizing: border-box
   max-width: 100%
   
@@ -37,15 +34,14 @@ nav
     h1
       margin: 0
       color: $text
-      font-size: 2.5rem
+      font-size: 1.5rem
+      font-weight: 600
+      letter-spacing: -0.02em
 
       span
         color: $primary
         font-weight: 500
         display: inline-block
-
-      @media (max-width: 480px)
-        font-size: 2rem
 
   .mobile-menu-toggle
     display: none
@@ -70,30 +66,22 @@ nav
     gap: 1.5rem
     
     a
-      text-transform: uppercase
-      color: $text
+      display: inline-flex
+      align-items: center
+      gap: 0.5rem
+      color: $text-light
       text-decoration: none
-      font-size: 1.5rem
-      position: relative
-      padding: 0.5rem 1rem
-      transition: color 0.3s ease
+      font-size: 1.05rem
+      font-weight: 500
+      padding: 0.5rem 0.25rem
+      transition: color 0.2s ease
 
-      &::after
-        content: ''
-        position: absolute
-        bottom: 0
-        left: 0
-        width: 100%
-        height: 2px
-        background-color: $primary
-        transform: scaleX(0)
-        transition: transform 0.3s ease
+      svg
+        font-size: 0.85em
+        opacity: 0.7
 
       &:hover
         color: $primary
-
-        &::after
-          transform: scaleX(1)
 
     .nav-divider
       width: 0.3rem
@@ -104,9 +92,8 @@ nav
 
 @media (max-width: 1024px)
   nav
-    margin: 1rem
-    padding: 1rem
-    background: rgba(0, 0, 0, 0.1)
+    margin: 1rem 1.5rem
+    padding: 0.5rem 0
 
     .mobile-menu-toggle
       display: flex
@@ -119,12 +106,11 @@ nav
       bottom: 0
       height: 100vh
       width: 100%
-      background-color: rgba(0, 0, 0, 0.95)
-      backdrop-filter: blur(10px)
+      background-color: $background
       flex-direction: column
       justify-content: center
-      align-items: center
-      gap: 2rem
+      align-items: flex-start
+      gap: 0.5rem
       padding: 2rem
       overflow-y: auto
       z-index: 100
@@ -134,13 +120,17 @@ nav
       transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s
 
       a
-        font-size: 2rem
+        font-size: 2.5rem
+        font-weight: 600
+        letter-spacing: -0.02em
+        padding: 0.5rem 0
+        gap: 1rem
+
+        svg
+          font-size: 0.6em
         opacity: 0
         transform: translateY(1rem)
         transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease
-
-        &:hover
-          transform: translateY(0) scale(1.1)
 
       .nav-divider
         display: none

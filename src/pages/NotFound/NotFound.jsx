@@ -1,43 +1,53 @@
 import "./styles.sass";
 import {useEffect} from "react";
-import {useBackground} from "@/common/components/Background/BackgroundContext.jsx";
+import {Link, useLocation} from "react-router";
 import {motion} from "framer-motion";
-import {Link} from "react-router";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope, faHouse, faLayerGroup} from "@fortawesome/free-solid-svg-icons";
+import {useBackground} from "@/common/components/Background/BackgroundContext.jsx";
+import ProfileImage from "@/common/images/profile.png";
+
+const places = [
+    {title: "Home", path: "/", icon: faHouse},
+    {title: "Projects", path: "/projects", icon: faLayerGroup},
+    {title: "Contact", path: "/contact", icon: faEnvelope},
+];
 
 export const NotFound = () => {
     const {setCircles} = useBackground();
+    const {pathname} = useLocation();
 
     useEffect(() => {
-        setCircles([
-            {right: '-10rem', bottom: '-15rem', size: '35rem', opacity: 0.2},
-            {left: '5rem', top: '5rem', size: '25rem', opacity: 0.2},
-        ]);
+        setCircles([{right: '-12rem', bottom: '-12rem', size: '30rem', opacity: 0.15}]);
         return () => setCircles([]);
     }, [setCircles]);
 
     return (
-        <motion.div 
-            className="not-found-page"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}>
-            <motion.div 
-                className="content"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}>
-                <h1>404</h1>
-                <h2>Page Not Found</h2>
-                <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
-                <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}>
-                    <Link to="/" className="home-button">
-                        Return Home
-                    </Link>
-                </motion.div>
-            </motion.div>
+        <motion.div className="not-found-page" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
+                    transition={{duration: 0.5}}>
+            <div className="not-found-text">
+                <span className="not-found-code">404</span>
+                <h1>Lost in orbit.</h1>
+                <p>
+                    <code>gnm.dev{pathname}</code> doesn't exist. It may have moved, or it never was.
+                </p>
+                <div className="not-found-links">
+                    {places.map(place => (
+                        <Link key={place.path} to={place.path}>
+                            <FontAwesomeIcon icon={place.icon}/>
+                            {place.title}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
+            <div className="not-found-orbit" aria-hidden="true">
+                <div className="orbit-ring">
+                    <div className="orbit-satellite">
+                        <img src={ProfileImage} alt=""/>
+                    </div>
+                </div>
+            </div>
         </motion.div>
     );
 }

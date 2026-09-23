@@ -11,6 +11,26 @@
   z-index: 1000
   backdrop-filter: blur(5px)
 
+.screenshot-dialog-close
+  position: absolute
+  top: 1.25rem
+  right: 1.25rem
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 2.5rem
+  height: 2.5rem
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  border-radius: 0.75rem
+  background: rgba(0, 0, 0, 0.5)
+  color: #FFFFFF
+  font-size: 1.1rem
+  cursor: pointer
+  transition: background 0.2s ease
+
+  &:hover
+    background: rgba(255, 255, 255, 0.12)
+
 .screenshot-dialog-content
   max-width: 90vw
   max-height: 90vh

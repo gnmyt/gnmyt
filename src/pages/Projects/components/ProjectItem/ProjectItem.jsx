@@ -1,5 +1,7 @@
 import "./styles.sass";
 import {motion, AnimatePresence} from "framer-motion";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowUpRightFromSquare, faExpand} from "@fortawesome/free-solid-svg-icons";
 import {useState, useEffect} from "react";
 import {PROJECT_DATA} from "@/pages/Projects/Projects.jsx";
 import ScreenshotDialog from "@/pages/Projects/components/ProjectItem/components/index.js";
@@ -69,7 +71,8 @@ export const ProjectItem = ({project, index}) => {
                                 <p className="project-year">{project.year}</p>
                             </div>
                             <a href={project.link} className="project-link" target="_blank" rel="noopener noreferrer">
-                                Visit Project
+                                {new URL(project.link).hostname.replace(/^www\./, "")}
+                                <FontAwesomeIcon icon={faArrowUpRightFromSquare}/>
                             </a>
                         </div>
                         <p className="project-description">{project.description}</p>
@@ -105,6 +108,7 @@ export const ProjectItem = ({project, index}) => {
                                     onLoad={() => handleImageLoad(idx)}
                                     onError={() => handleImageError(idx)}
                                 />
+                                <span className="screenshot-expand"><FontAwesomeIcon icon={faExpand}/></span>
                             </motion.div>
                         ))
                         : project.screenshots && project.screenshots.length > 0 ?

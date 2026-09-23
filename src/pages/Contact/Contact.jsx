@@ -77,14 +77,10 @@ export const Contact = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             variants={itemVariants}
-                            whileHover={{scale: 1.03, boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)"}}
                             whileTap={{scale: 0.98}}>
-                            <motion.div
-                                className="platform-icon"
-                                whileHover={{scale: 1.1, rotate: [0, -5, 5, -5, 0]}}
-                                transition={{duration: 0.5}}>
+                            <div className="platform-icon">
                                 <FontAwesomeIcon icon={platform.icon}/>
-                            </motion.div>
+                            </div>
                             <div className="platform-info">
                                 <h1>{platform.title}</h1>
                                 <p>{platform.description}</p>
@@ -99,15 +95,10 @@ export const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     variants={donationVariants}
-                    whileHover={{scale: 1.02, boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)"}}
                     whileTap={{scale: 0.98}}>
-                    <motion.div
-                        className="icon-area"
-                        whileHover={{scale: 1.1,}}
-                        animate={{scale: [1, 1.1, 1],}}
-                        transition={{duration: 1.5, repeat: Infinity, repeatType: "reverse"}}>
+                    <div className="icon-area">
                         <FontAwesomeIcon icon={faHeart}/>
-                    </motion.div>
+                    </div>
                     <div className="donation-info">
                         <h1>Buy me a coffee</h1>
                         <p>Want to support my work? Your contribution will help me continue creating free and

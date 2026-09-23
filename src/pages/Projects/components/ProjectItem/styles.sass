@@ -20,8 +20,7 @@
       border-radius: 18px
       overflow: hidden
       background-color: $background
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35)
-      transition: all 0.3s ease
+      border: 1px solid rgba(255, 255, 255, 0.08)
 
       .project-logo
         width: 100%
@@ -55,37 +54,29 @@
             font-weight: 600
 
           .project-year
-            color: $primary
+            color: $text-light
+            opacity: 0.5
             font-size: 1rem
             font-weight: 500
             margin: 0
-            padding: 0.25rem 0.8rem
-            background: rgba($primary, 0.12)
-            border-radius: 20px
-            border: 1px solid rgba($primary, 0.4)
 
         .project-link
           display: inline-flex
           align-items: center
-          gap: 0.5rem
-          background: linear-gradient(135deg, rgba($primary, 0.8), rgba($primary, 0.6))
-          color: $text
-          padding: 0.8rem 1.5rem
-          border-radius: 12px
+          gap: 0.35rem
+          color: $primary
+          font-size: 1rem
+          font-weight: 500
           text-decoration: none
-          font-weight: 600
-          transition: all 0.3s ease
-          border: 1px solid rgba($primary, 0.4)
-          backdrop-filter: blur(5px)
-          box-shadow: 0 4px 15px rgba($primary, 0.2)
+          transition: color 0.2s ease
+
+          svg
+            font-size: 0.8em
 
           &:hover
-            transform: translateY(-2px)
-            box-shadow: 0 8px 20px rgba($primary, 0.3)
-            background: linear-gradient(135deg, rgba($primary, 0.9), rgba($primary, 0.7))
-
-          &:hover::after
-            transform: translateX(3px)
+            color: lighten($primary, 12%)
+            text-decoration: underline
+            text-underline-offset: 0.2em
 
       .project-description
         color: $text-light
@@ -101,18 +92,11 @@
         margin-bottom: 1rem
 
         .tech-tag
-          background: rgba($primary, 0.15)
+          background: rgba(255, 255, 255, 0.06)
           color: $text-light
-          padding: 0.35rem 0.8rem
-          border-radius: 50px
+          padding: 0.3rem 0.7rem
+          border-radius: 0.4rem
           font-size: 0.85rem
-          border: 1px solid rgba($primary, 0.3)
-          transition: all 0.25s ease
-
-          &:hover
-            background: rgba($primary, 0.3)
-            transform: translateY(-3px)
-            box-shadow: 0 5px 10px rgba($primary, 0.2)
 
   .project-screenshots
     display: grid
@@ -123,9 +107,8 @@
     .screenshot-container
       border-radius: 14px
       overflow: hidden
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3)
+      border: 1px solid rgba(255, 255, 255, 0.08)
       position: relative
-      transition: all 0.3s ease
       aspect-ratio: 16 / 9
       cursor: pointer
 
@@ -163,6 +146,26 @@
           &::after
             animation-delay: 0.5s
 
+      .screenshot-expand
+        position: absolute
+        top: 0.6rem
+        right: 0.6rem
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 1.9rem
+        height: 1.9rem
+        border-radius: 0.5rem
+        background: rgba(0, 0, 0, 0.55)
+        color: $text
+        font-size: 0.8rem
+        opacity: 0
+        transition: opacity 0.2s ease
+        pointer-events: none
+
+      &:hover .screenshot-expand
+        opacity: 1
+
       .screenshot-image
         width: 100%
         height: 100%
@@ -173,6 +176,6 @@
 
   .project-divider
     height: 1px
-    background: linear-gradient(to right, transparent, $stroke, transparent)
+    background: rgba(255, 255, 255, 0.08)
     margin-top: 3.5rem
     width: 100%

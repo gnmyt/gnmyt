@@ -3,12 +3,14 @@ import ProfileImage from "@/common/images/profile.png";
 import {Link} from "react-router";
 import {Fragment, useState} from "react";
 import {motion} from "framer-motion";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope, faHouse, faLayerGroup} from "@fortawesome/free-solid-svg-icons";
 
-const navigation = {
-    "Home": "/",
-    "Projects": "/projects",
-    "Contact": "/contact",
-}
+const navigation = [
+    {title: "Home", path: "/", icon: faHouse},
+    {title: "Projects", path: "/projects", icon: faLayerGroup},
+    {title: "Contact", path: "/contact", icon: faEnvelope},
+];
 
 export const Navigation = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -61,16 +63,16 @@ export const Navigation = () => {
             </motion.button>
 
             <div className="nav-area">
-                {Object.keys(navigation).map((key) => (
-                    <Fragment key={key}>
-                        <Link 
-                            className="nav-item" 
-                            to={navigation[key]} 
+                {navigation.map((entry, index) => (
+                    <Fragment key={entry.path}>
+                        <Link
+                            className="nav-item"
+                            to={entry.path}
                             onClick={() => setMobileMenuOpen(false)}>
-                            {key}
+                            <FontAwesomeIcon icon={entry.icon}/>
+                            {entry.title}
                         </Link>
-                        {key !== Object.keys(navigation)[Object.keys(navigation).length - 1] &&
-                            <div className="nav-divider" />}
+                        {index < navigation.length - 1 && <div className="nav-divider" />}
                     </Fragment>
                 ))}
             </div>

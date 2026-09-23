@@ -6,25 +6,35 @@
   border-radius: 50%
   top: 50%
   left: 50%
-  transform: translate(-50%, -50%)
+  translate: -50% -50%
   border: 2px solid $stroke
-  cursor: pointer
+  cursor: grab
+  touch-action: none
+  user-select: none
+  -webkit-user-select: none
+  -webkit-touch-callout: none
+  -webkit-tap-highlight-color: transparent
+
+  &:active
+    cursor: grabbing
   padding: 0
   overflow: hidden
   display: flex
   justify-content: center
   align-items: center
   aspect-ratio: 1/1
-  transition: transform 0.2s ease
+  transition: border-color 0.2s ease
 
-  &:hover
-    transform: translate(-50%, -50%) scale(1.1)
+  @media (hover: hover)
+    &:hover
+      border-color: rgba(255, 255, 255, 0.5)
 
   img
     width: calc(100% - 2rem)
     height: calc(100% - 2rem)
     object-fit: cover
     pointer-events: none
+    -webkit-user-drag: none
 
   @media (max-width: 768px)
     img
