@@ -95,6 +95,7 @@ const separatePlanets = planets => {
 
 const displace = (planets, offsets, drag, center) =>
     planets.map(planet => {
+        if (planet.fallen) return planet;
         const held = drag && drag.name === planet.name;
         const target = held ? {dx: drag.pointerX - center.x - planet.x, dy: drag.pointerY - center.y - planet.y} : null;
         const offset = offsets[planet.name];
@@ -104,18 +105,27 @@ const displace = (planets, offsets, drag, center) =>
         return next ? {...planet, x: planet.x + next.dx, y: planet.y + next.dy} : planet;
     });
 
+const CATCH = 90;
+
+const floorOverride = (planets, bodies) =>
+    planets.map(planet => {
+        const body = bodies[planet.name];
+        return body ? {...planet, ax: planet.x, ay: planet.y, x: body.x, y: body.y, fallen: true} : {...planet, ax: planet.x, ay: planet.y, fallen: false};
+    });
+
 export const Home = () => {
     const outerRingRef = useRef(null);
     const innerRingRef = useRef(null);
     const [outerPlanets, setOuterPlanets] = useState([]);
     const [innerPlanets, setInnerPlanets] = useState([]);
+    const [targetRing, setTargetRing] = useState(null);
     const {setCircles} = useBackground();
     const isMobile = useMediaQuery("(max-width: 1024px)");
 
     const offsets = useRef({});
     const drag = useRef(null);
     const moved = useRef(false);
-    const fallen = useRef(null);
+    const fallen = useRef({});
     const shown = useRef({outer: [], inner: []});
     shown.current = {outer: outerPlanets, inner: innerPlanets};
 
@@ -141,17 +151,25 @@ export const Home = () => {
             const time = Date.now() * 0.001;
             const rect = innerRing.getBoundingClientRect();
             const center = {x: rect.left + rect.width / 2, y: rect.top + rect.height / 2};
+            const held = drag.current;
 
-            if (fallen.current) {
-                fallen.current = separatePlanets(dropPlanets(fallen.current, center));
-                setOuterPlanets(fallen.current.filter(body => body.ring === "outer"));
-                setInnerPlanets(fallen.current.filter(body => body.ring === "inner"));
-                requestAnimationFrame(animatePlanets);
-                return;
+            const bodies = Object.values(fallen.current);
+            if (bodies.length) {
+                const carried = held && fallen.current[held.name];
+                const stepped = separatePlanets(dropPlanets(bodies.filter(body => body !== carried), center));
+                if (carried) {
+                    const x = carried.x + (held.pointerX - center.x - carried.x) * LEASH;
+                    const y = carried.y + (held.pointerY - center.y - carried.y) * LEASH;
+                    stepped.push({...carried, vx: x - carried.x, vy: y - carried.y, x, y});
+                }
+                fallen.current = Object.fromEntries(stepped.map(body => [body.name, body]));
             }
 
-            setOuterPlanets(prev => displace(updatePlanetPositions(prev, time, outerRing.offsetWidth / 2, isMobile, drag.current), offsets.current, drag.current, center));
-            setInnerPlanets(prev => displace(updatePlanetPositions(prev, time, innerRing.offsetWidth / 2, isMobile, drag.current), offsets.current, drag.current, center));
+            setOuterPlanets(prev => displace(floorOverride(updatePlanetPositions(prev, time, outerRing.offsetWidth / 2, isMobile, held), fallen.current), offsets.current, held, center));
+            setInnerPlanets(prev => displace(floorOverride(updatePlanetPositions(prev, time, innerRing.offsetWidth / 2, isMobile, held), fallen.current), offsets.current, held, center));
+
+            const carrying = held && fallen.current[held.name];
+            setTargetRing(carrying ? (shown.current.outer.some(planet => planet.name === held.name) ? "outer" : "inner") : null);
 
             requestAnimationFrame(animatePlanets);
         };
@@ -176,10 +194,25 @@ export const Home = () => {
             setOuterPlanets(rephase);
             setInnerPlanets(rephase);
 
+            const body = fallen.current[held.name];
+            if (body) {
+                const onOuter = shown.current.outer.some(p => p.name === held.name);
+                const radius = (onOuter ? outerRingRef : innerRingRef).current.offsetWidth / 2;
+                if (Math.abs(Math.hypot(body.x, body.y) - radius) < CATCH) {
+                    const angle = Math.atan2(body.y, body.x);
+                    const now = Date.now() * 0.001;
+                    const restart = planets => planets.map(planet => planet.name === held.name ? {...planet, offset: angle - now * planet.speed} : planet);
+                    (onOuter ? setOuterPlanets : setInnerPlanets)(restart);
+                    delete fallen.current[held.name];
+                    offsets.current[held.name] = {dx: body.x - Math.cos(angle) * radius, dy: body.y - Math.sin(angle) * radius, vx: body.vx, vy: body.vy};
+                }
+                return;
+            }
+
             if (Math.hypot(held.pointerX - held.startX, held.pointerY - held.startY) < SNAP) return;
             offsets.current = {};
-            const kick = ring => planet => ({...planet, ring, vx: (Math.random() - 0.5) * 4, vy: 0});
-            fallen.current = [...shown.current.outer.map(kick("outer")), ...shown.current.inner.map(kick("inner"))];
+            const kick = planet => [planet.name, {name: planet.name, x: planet.x, y: planet.y, vx: (Math.random() - 0.5) * 4, vy: 0}];
+            fallen.current = Object.fromEntries([...shown.current.outer, ...shown.current.inner].map(kick));
         };
         window.addEventListener("pointermove", onMove);
         window.addEventListener("pointerup", onUp);
@@ -194,17 +227,6 @@ export const Home = () => {
     const handlePlanetGrab = (name, event) => {
         moved.current = false;
         drag.current = {name, heldAt: Date.now() * 0.001, startX: event.clientX, startY: event.clientY, pointerX: event.clientX, pointerY: event.clientY};
-        if (!fallen.current) return;
-
-        const time = Date.now() * 0.001;
-        const restore = (bodies, ring) => {
-            const orbit = updatePlanetPositions(bodies, time, ring.offsetWidth / 2, isMobile);
-            orbit.forEach((planet, index) => { offsets.current[planet.name] = {dx: bodies[index].x - planet.x, dy: bodies[index].y - planet.y, vx: 0, vy: 0}; });
-            return orbit;
-        };
-        setOuterPlanets(restore(fallen.current.filter(body => body.ring === "outer"), outerRingRef.current));
-        setInnerPlanets(restore(fallen.current.filter(body => body.ring === "inner"), innerRingRef.current));
-        fallen.current = null;
     };
 
     const handlePlanetClick = (planetName) => {
@@ -224,10 +246,10 @@ export const Home = () => {
                 animate={{opacity: 1, bottom: isMobile ? "-30rem" : "-60rem"}}
                 exit={{opacity: 0, bottom: "-120rem"}}
                 transition={{duration: 0.8, ease: "easeInOut"}}>
-                <div className="orbit-ring orbit-ring-inner" ref={innerRingRef}>
+                <div className={`orbit-ring orbit-ring-inner${targetRing === "inner" ? " is-target" : ""}`} ref={innerRingRef}>
                     {innerPlanets.map(planet => planet.visible && (
                         <Planet key={planet.name} {...planet} onClick={handlePlanetClick} onGrab={handlePlanetGrab}/>))}
-                    <div className="orbit-ring orbit-ring-outer" ref={outerRingRef}>
+                    <div className={`orbit-ring orbit-ring-outer${targetRing === "outer" ? " is-target" : ""}`} ref={outerRingRef}>
                         {outerPlanets.map(planet => planet.visible && (
                             <Planet key={planet.name} {...planet} onClick={handlePlanetClick} onGrab={handlePlanetGrab}/>))}
                     </div>
